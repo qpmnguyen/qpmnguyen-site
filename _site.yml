@@ -1,0 +1,21 @@
+name: "qpmnguyen-blog"
+title: "Limit Testing"
+description: |
+  Different modelling projects and random thoughts about stuff
+output_dir: "_site"
+base_url: "https://limit-testing.netlify.app/"
+collections:
+  posts:
+    disqus: 
+      shortname: "limit-testing"
+    share: [twitter, linkedin]
+    subscribe: _subscribe.html
+navbar:
+  right:
+    - text: "Home"
+      href: index.html
+    - text: "About"
+      href: about.html
+    - text: "Gallery"
+      href: gallery.html
+output: distill::distill_article

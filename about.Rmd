@@ -1,0 +1,15 @@
+---
+title: "About this blog"
+description: |
+  What is this blog
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+Welcome to the *Limit Testing* Blog. Contrary to the initial design, I've decided to separate my blogging platform from my personal website. The goal is to have a more robust (and nicer looking) space for more data-intensive posts, which will be part of my data analysis portfolio.  
+
+I'll also add posts from other subjects too!  
+
+If you're interested, check me out at my [personal webpage](https://qpmnguyen.netlify.app/), [GitHub](https://github.com/qpmnguyen), [Twitter](https://twitter.com/quangpmnguyen) or [LinkedIn](https://www.linkedin.com/in/qpmnguyen/).  

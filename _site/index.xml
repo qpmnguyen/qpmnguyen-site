@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:dc="http://purl.org/dc/elements/1.1/" version="2.0">
+  <channel>
+    <title>Limit Testing</title>
+    <link>https://limit-testing.netlify.app/</link>
+    <atom:link href="https://limit-testing.netlify.app/index.xml" rel="self" type="application/rss+xml"/>
+    <description>Different modelling projects and random thoughts about stuff
+</description>
+    <generator>Distill</generator>
+    <lastBuildDate>Sun, 10 Jan 2021 00:00:00 +0000</lastBuildDate>
+    <item>
+      <title>Election prediction using Elo</title>
+      <dc:creator>Quang Nguyen</dc:creator>
+      <link>https://limit-testing.netlify.app/posts/2021-01-10-election-prediction-using-elo</link>
+      <description>A fun project to predict the 2020 presidential election using weekly average polling data and Elo models</description>
+      <category>fun</category>
+      <category>elo modelling</category>
+      <category>prediction</category>
+      <guid>https://limit-testing.netlify.app/posts/2021-01-10-election-prediction-using-elo</guid>
+      <pubDate>Sun, 10 Jan 2021 00:00:00 +0000</pubDate>
+    </item>
+  </channel>
+</rss>

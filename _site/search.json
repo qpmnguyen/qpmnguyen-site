@@ -1,0 +1,27 @@
+{
+  "articles": [
+    {
+      "path": "about.html",
+      "title": "About this blog",
+      "description": "What is this blog",
+      "author": [],
+      "contents": "\r\nWelcome to the Limit Testing Blog. Contrary to the initial design, I’ve decided to separate my blogging platform from my personal website. The goal is to have a more robust (and nicer looking) space for more data-intensive posts, which will be part of my data analysis portfolio.\r\nI’ll also add posts from other subjects too!\r\nIf you’re interested, check me out at my personal webpage, GitHub, Twitter or LinkedIn.\r\n\r\n\r\n\r\n",
+      "last_modified": "2021-01-10T17:06:33-05:00"
+    },
+    {
+      "path": "gallery.html",
+      "title": "Gallery of featured posts",
+      "author": [],
+      "contents": "\r\n\r\n\r\n\r\n",
+      "last_modified": "2021-01-10T17:06:34-05:00"
+    },
+    {
+      "path": "index.html",
+      "title": "Limit Testing",
+      "author": [],
+      "contents": "\r\n\r\n\r\n\r\n",
+      "last_modified": "2021-01-10T17:06:36-05:00"
+    }
+  ],
+  "collections": ["posts/posts.json"]
+}
