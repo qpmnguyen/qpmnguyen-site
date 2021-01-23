@@ -85,26 +85,26 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 </style>
 
   <!--radix_placeholder_meta_tags-->
-  <title>Limit Testing: Gallery of featured posts</title>
+  <title>Limit Testing: Gallery of complete data analysis projects</title>
 
 
 
 
   <!--  https://developers.facebook.com/docs/sharing/webmasters#markup -->
-  <meta property="og:title" content="Limit Testing: Gallery of featured posts"/>
+  <meta property="og:title" content="Limit Testing: Gallery of complete data analysis projects"/>
   <meta property="og:type" content="article"/>
   <meta property="og:locale" content="en_US"/>
   <meta property="og:site_name" content="Limit Testing"/>
 
   <!--  https://dev.twitter.com/cards/types/summary -->
   <meta property="twitter:card" content="summary"/>
-  <meta property="twitter:title" content="Limit Testing: Gallery of featured posts"/>
+  <meta property="twitter:title" content="Limit Testing: Gallery of complete data analysis projects"/>
 
   <!--/radix_placeholder_meta_tags-->
   <!--radix_placeholder_rmarkdown_metadata-->
 
   <script type="text/json" id="radix-rmarkdown-metadata">
-  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","listing"]}},"value":[{"type":"character","attributes":{},"value":["Gallery of featured posts"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["posts"]}},"value":[{"type":"character","attributes":{},"value":["election-prediction-using-elo.Rmd"]}]}]}
+  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","listing"]}},"value":[{"type":"character","attributes":{},"value":["Gallery of complete data analysis projects"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["posts"]}},"value":[{"type":"character","attributes":{},"value":["2021-01-10-election-prediction-using-elo"]}]}]}
   </script>
   <!--/radix_placeholder_rmarkdown_metadata-->
   <!--radix_placeholder_navigation_in_header-->
@@ -443,8 +443,15 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
     top: 0;
   }
 
+  /* adjust viewport for navbar height */
+  /* helps vertically center bootstrap (non-distill) content */
+  .min-vh-100 {
+    min-height: calc(100vh - 100px) !important;
+  }
+
   </style>
 
+  <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
   <link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet"/>
   <link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet"/>
   <script src="site_libs/headroom-0.9.4/headroom.min.js"></script>
@@ -552,19 +559,21 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
             var results = fuse.search(query, searchOptions);
             callback(results
               .map(function(result) { return result.item; })
-              .filter(function(item) { return !!item.description; })
             );
           },
           templates: {
             suggestion: function(suggestion) {
+              var img = suggestion.preview && Object.keys(suggestion.preview).length > 0
+                ? `<img src="${offsetURL(suggestion.preview)}"</img>`
+                : '';
               var html = `
                 <div class="search-item">
                   <h3>${suggestion.title}</h3>
                   <div class="search-item-description">
-                    ${suggestion.description}
+                    ${suggestion.description || ''}
                   </div>
                   <div class="search-item-preview">
-                    <img src="${suggestion.preview ? offsetURL(suggestion.preview) : ''}"</img>
+                    ${img}
                   </div>
                 </div>
               `;
@@ -587,6 +596,10 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </script>
 
   <style type="text/css">
+
+  .nav-search {
+    font-size: x-small;
+  }
 
   /* Algolioa Autocomplete */
 
@@ -662,6 +675,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   }
 
   .algolia-autocomplete .aa-dropdown-menu .aa-suggestion .search-item h3 {
+    font-size: 1rem;
     margin-block-start: 0;
     margin-block-end: 5px;
   }
@@ -889,6 +903,11 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
     text-decoration: underline;
   }
 
+  d-article details {
+    grid-column: text;
+    margin-bottom: 0.8em;
+  }
+
   @media(min-width: 768px) {
 
   d-article pre,
@@ -1043,6 +1062,17 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 
   div.hanging-indent{
     margin-left: 1em; text-indent: -1em;
+  }
+
+  /* Citation hover box */
+
+  .tippy-box[data-theme~=light-border] {
+    background-color: rgba(250, 250, 250, 0.95);
+  }
+
+  .tippy-content > p {
+    margin-bottom: 0;
+    padding: 2px;
   }
 
 
@@ -1710,7 +1740,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
       var layout = $(this).attr('data-layout');
 
       // apply layout to markdown level block elements
-      var elements = $(this).children().not('div.sourceCode, pre, script');
+      var elements = $(this).children().not('details, div.sourceCode, pre, script');
       elements.each(function(i, el) {
         var layout_div = $('<div class="' + layout + '"></div>');
         if (layout_div.hasClass('shaded')) {
@@ -1825,6 +1855,20 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
       // move appendix-bottom entries to the bottom
       $('.appendix-bottom').appendTo('d-appendix').children().unwrap();
       $('.appendix-bottom').remove();
+
+      // hoverable references
+      $('span.citation[data-cites]').each(function() {
+        var refHtml = $('#ref-' + $(this).attr('data-cites')).html();
+        window.tippy(this, {
+          allowHTML: true,
+          content: refHtml,
+          maxWidth: 500,
+          interactive: true,
+          interactiveBorder: 10,
+          theme: 'light-border',
+          placement: 'bottom-start'
+        });
+      });
 
       // clear polling timer
       clearInterval(tid);
@@ -1986,7 +2030,10 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 
   <!--/radix_placeholder_distill-->
   <script src="site_libs/header-attrs-2.6/header-attrs.js"></script>
-  <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+  <script src="site_libs/popper-2.6.0/popper.min.js"></script>
+  <link href="site_libs/tippy-6.2.7/tippy.css" rel="stylesheet" />
+  <link href="site_libs/tippy-6.2.7/tippy-light-border.css" rel="stylesheet" />
+  <script src="site_libs/tippy-6.2.7/tippy.umd.min.js"></script>
   <script src="site_libs/anchor-4.2.2/anchor.min.js"></script>
   <script src="site_libs/bowser-1.9.3/bowser.min.js"></script>
   <script src="site_libs/webcomponents-2.0.0/webcomponents.js"></script>
@@ -2002,7 +2049,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <!--radix_placeholder_front_matter-->
 
 <script id="distill-front-matter" type="text/json">
-{"title":"Gallery of featured posts","authors":[]}
+{"title":"Gallery of complete data analysis projects","authors":[]}
 </script>
 
 <!--/radix_placeholder_front_matter-->
@@ -2156,9 +2203,53 @@ function init_posts_list() {
 
 
 
-<div class="posts-container posts-apply-limit l-page">
+<div class="posts-container posts-with-sidebar posts-apply-limit l-screen-inset">
 <div class="posts-list">
-<h1 class="posts-list-caption" data-caption="Gallery of featured posts">Gallery of featured posts</h1>
+<h1 class="posts-list-caption" data-caption="Gallery of complete data analysis projects">Gallery of complete data analysis projects</h1>
+<a href="posts/2021-01-10-election-prediction-using-elo/" class="post-preview">
+<script class="post-metadata" type="text/json">{"categories":["fun","elo modelling","prediction"]}</script>
+<div class="metadata">
+<div class="publishedDate">Jan. 10, 2021</div>
+<div class="dt-authors">
+<div class="dt-author">Quang Nguyen</div>
+</div>
+</div>
+<div class="thumbnail">
+<img src="posts/2021-01-10-election-prediction-using-elo/election-prediction-using-elo_files/figure-html5/unnamed-chunk-12-1.png"/>
+</div>
+<div class="description">
+<h2>Election prediction using Elo</h2>
+<div class="dt-tags">
+<div class="dt-tag">fun</div>
+<div class="dt-tag">elo modelling</div>
+<div class="dt-tag">prediction</div>
+</div>
+<p>A fun project to predict the 2020 presidential election using weekly average polling data and Elo models</p>
+</div>
+</a>
+</div>
+<div class="posts-sidebar">
+<div class="sidebar-section categories">
+<h3>Categories</h3>
+<ul>
+<li>
+<a href="#category:articles">articles</a>
+<span class="category-count">(1)</span>
+</li>
+<li>
+<a href="#category:elo_modelling">elo modelling</a>
+<span class="category-count">(1)</span>
+</li>
+<li>
+<a href="#category:fun">fun</a>
+<span class="category-count">(1)</span>
+</li>
+<li>
+<a href="#category:prediction">prediction</a>
+<span class="category-count">(1)</span>
+</li>
+</ul>
+</div>
 </div>
 <div class="posts-more">
 <a href="#">More articles &raquo;</a>
@@ -2167,7 +2258,7 @@ function init_posts_list() {
 <!--/radix_placeholder_article_listing-->
 
 <div class="d-title">
-<h1>Gallery of featured posts</h1>
+<h1>Gallery of complete data analysis projects</h1>
 <!--radix_placeholder_categories-->
 <!--/radix_placeholder_categories-->
 

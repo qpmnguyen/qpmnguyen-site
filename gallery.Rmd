@@ -1,6 +1,6 @@
 ---
-title: "Gallery of featured posts"
+title: "Gallery of complete data analysis projects"
 listing:
     posts:
-        election-prediction-using-elo.Rmd
+        2021-01-10-election-prediction-using-elo
 ---
