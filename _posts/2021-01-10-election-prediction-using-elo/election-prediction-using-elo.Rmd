@@ -14,7 +14,6 @@ output:
     self_contained: false
     toc: true
     toc_float: true
-
 ---
 
 ```{r setup, include=FALSE}
@@ -38,16 +37,14 @@ showtext_auto()
 
 ## What is an Elo model?
 
-The elo rating system is a method developed by [Arpad Elo](https://en.wikipedia.org/wiki/Arpad_Elo) in order to rank players by ability in a zero sum game. Elo has been used in various contexts, most famously the way to rank chess players through the UCSF and FIDE systems. Elo has been used in modern contexts as well, from Tinder to World of Warcraft. A really nice attribute about Elo is that a difference in scores can be translated to a probability. Let's assume a focal player $A$ with rank $R_A$ and opponent $B$ with rank $R_B$. The expected value $E_A$ of player $A$ in the match [can be defined as](https://en.wikipedia.org/wiki/Elo_rating_system#Implementing_Elo's_scheme):  
-$$E_A = \frac{1}{1 + 10^{(R_B - R_A)/400}} = E_A = \frac{1}{1 + 10^{-(R_A - R_B)/400}}$$.  
+The elo rating system is a method developed by [Arpad Elo](https://en.wikipedia.org/wiki/Arpad_Elo) in order to rank players by ability in a zero sum game. Elo has been used in various contexts, most famously the way to rank chess players through the UCSF and FIDE systems. Elo has been used in modern contexts as well, from Tinder to World of Warcraft. A really nice attribute about Elo is that a difference in rankings can be translated to a probability. Let's assume a focal player $A$ with rank $R_A$ is facing up against opponent $B$ with rank $R_B$. The expected "score" $E_A$ of player $A$ in the match [can be defined as](https://en.wikipedia.org/wiki/Elo_rating_system#Implementing_Elo's_scheme):
 
-Remember that the standard logistic function is $\frac{1}{1 + e^{-x}}$. You can see that there are tons of similarities between the two functions, with the exception being the exponential constant $e$. This is because while elo probabilities are log-odds, they are not natural log based but rather based on base 10. 
+$$E_A = \frac{1}{1 + 10^{(R_B - R_A)/400}} = \frac{1}{1 + 10^{-(R_A - R_B)/400}}$$
 
-Through this logistic formulation (while not exactly logistic due to the differences in the base of the logs), the expected values are bounded between 0 and 1. 
+Recall that the standard logistic function is $\frac{1}{1 + e^{-x}}$. You can see that there are tons of similarities between the standard logistic function and the function for the expectation of player $A$'s score, with the exception being the exponential constant $e$. This is because while elo probabilities are log-odds, they are not natural log based but rather based on base 10. There are easy conversions between the base 10 and base $e$, which allows sports statisticians to perform logistic regression on elo rankings. However, that is a bit beyond the focus of this project.
 
-In an elo model, after each match, the rankings are updated as:  
-$$R_A* = R_A + K \cdot (outcome - E_A)$$
-where $K$ is the K-factor controlling the relative gains and losses of elo points. The variable `outcome` here is a binary variable (1 if player $A$ wins). Think of this similar to how you would use a binary cross-entropy loss to train a model that outputs log odds (such as a logistic regression) and true values which are binary. The difference is that in this case, we use this to determine the new rankings based on record and expectation due to differences in elo rankings. As such, let's define a couple of functions reflecting the ideas above:
+The elo model updates the ranking of the person after each match. For our focal player $A$, the rankings are updated as:\
+$$R_A* = R_A + K \cdot (outcome - E_A)$$ where $K$ is the $K$-factor controlling the relative gains and losses of elo points. The variable `outcome` here is a binary variable (1 if player $A$ wins). Think of this similar to how you would use a binary cross-entropy loss to train a model that outputs an odds (such as a logistic regression) instead of true binary values. In this case, ranking updates are based on the difference between the true outcome and the expected outcome $E_A$. Let's define a couple of functions reflecting the ideas above:
 
 ```{r functions, echo=TRUE}
 # Calculate win probabilities from two rankings  
@@ -66,16 +63,17 @@ back_transformation <- function(prob){
 }
 ```
 
-Let's test this out!
+The first function, `win_prob` calculates the win probability given two rankings. It outputs a `list` with `p1` being the win probability of the focal player 1. The second function, `back_transformation`, takes in the probability and returns a difference in rankings.
 
-Let's say that there is about a 200 difference in elo, then the win probability, according to [this website](https://www.walkofmind.com/programming/chess/elo.htm) is about 76%.  
+To test and see whether our model is correct, let's compare to a reference. According to [this website](https://www.walkofmind.com/programming/chess/elo.htm), a win probability of 0.76 for focal player 1 would be a result of 200 elo difference. Let's try it out!
 
 ```{r, code_folding=TRUE}
 glue("Win probability of 76% converts to an elo difference of {diff}", diff = back_transformation(0.76))
 ```
 
+So our elo formulation so far is correct.
 
-## The US presidential election as a pseudo-sports contest  
+## The US presidential election as a pseudo-sports contest
 
 The US presidential election is a surprisingly appropriate context to use elo. In this election, two candidates compete for the "title" of the President of the United States. Polling data is collected regularly, which can act as "matches" where the two candidates can test their "mettle" before the final election day. Furthermore, the structure of the election, a winner-take-all Electoral College system, makes it even closer to being a sports match.
 
@@ -87,10 +85,11 @@ In this instance, elo system is applied to model the probability of winning an e
 
 -   Third, the model rewards consistent polling, and rewards them with higher probability of winning. I would say this is a reasonable assumption as performance in the polls with high margins often indicate a victory in that jurisdcition. However, as many consumers of election modelling know, factors such as close to election day scandals or turnout would affect the final results and violate this assumption.
 
-## Methods   
+## Methods
 
-### "Training" data  
-Let's start our modeling exercise by reading in basic polling data from FiveThirtyEight:
+### "Training" data
+
+Let's start our modeling exercise by reading in basic polling data from FiveThirtyEight. Here, we simplify things a little bit. First, we do not consider the split votes of the states of Nebraska and Maine, and second, we only focus on the adjusted percentage scores, which usually accounts for polling reliability.
 
 ```{r pollingdat, message = F, code_folding=TRUE}
 data <- read.csv(file = "data/presidential_poll_averages_2020.csv")
@@ -105,9 +104,9 @@ proc_data <- data %>% as_tibble() %>% mutate(modeldate = as_date(strptime(modeld
 rmarkdown::paged_table(proc_data)
 ```
 
-### Prior information for initial elo seeding  
+### Prior information for initial elo seeding
 
-We seeded initial elo based on election results from the 2016 election. using 1000 elo as a baseline, we subtract or add points to candidate's starting elo based on how they (or the candidate belonging to their party) performed previously. We call this our priors.   
+Just having an elo model is not enough! We want to seed our "players" with some elo first. The easiest way is to seed both candidates with an elo of 1000, but that doesn't account for each candidate's advantage at each state due to their political affiliation. Here, we decided to take a simple solution and take the election results from the 2016 election. Based on the margin of victory, we will use the `back_transformation` function to calculate a difference in elo and use that as a seed. For example, if Donald Trump won state X with 76% of the votes, then he would start with 1200 elo compared to Joe Biden's 1000 elo. As such, we are able to incorporate some prior information. We want polling to be good enough to overcome this inherent advantage.
 
 ```{r priordat, echo=TRUE, message = FALSE, code_folding = TRUE}
 # Function to convert abbreviation to state name
@@ -134,9 +133,11 @@ prior <- prior %>% mutate(state = map_chr(state_abbreviation, ~get_stname(.x))) 
 rmarkdown::paged_table(prior)
 ```
 
-### Incorporating margin of victory  
+### Incorporating margin of victory
 
-We incorporate margin of victory into our elo update calculation by modifying the K-factor. This is a simple linear adjustment $$K_{eff} = K * mov$$ where $$mov$$ is the margin of victory. This means that the "winning" candidate will gain points as a proportion of K that is equal to their margin of polling victory. As such, we increase values of K significantly to compensate for the low gains in elo when margins can be 1 percent.  
+A lot of elo models also incorporate something called the margin of victory. Margin of victory (mov) scales elo gains and losses based on how well the player performed. A knock-out match from an underdog would result in a massive gain in elo, compared to if that match was a close one. We try to incorporate margin of victory into our elo update calculation by modifying the K-factor with a linear adjustment $$K_{eff} = K * mov$$ where $$mov$$ is the margin of victory. This means that the "winning" candidate will gain points as a proportion of K that is equal to their margin of polling victory. As such, we increase values of K significantly to compensate for the low gains in elo when margins can be 1 percent. This also prevents polling results from driving elo scores to crazy levels.
+
+Taking that into account, here's out update function.
 
 ```{r, echo=TRUE}
 # Update elo using those rankings  
@@ -152,8 +153,9 @@ update_elo <- function(r1, r2, outcome, mov, K=30){
 }
 ```
 
-### Getting elo sequence  
-Let's get elo sequence for each state, given prior information from the 2016 election and weekly average polls with the Democratic candidate as the focal candidate with rankings equals $r1$. First, let's define a function that wraps this procedure up for each state. This function takes the working data and the prior data, and returns an elo sequence from the initial week (defined as the first week prior to the first available polling week by state) to the last available week.  
+### Getting elo sequence
+
+The general gist of the model would be getting the elo sequence for each state based on weekly average polling, with prior information from the 2016 election. We're going to choose the Democratic candidate as the focal candidate, with rankings equals `r1`. With that in mind, a wrapper function that performs this for each state.
 
 ```{r, echo=TRUE, waring=FALSE}
 get_sequence <- function(proc_data, prior, st, init=1000, K = 50){
@@ -200,7 +202,7 @@ get_sequence <- function(proc_data, prior, st, init=1000, K = 50){
 }
 ```
 
-Before we apply this to our data, first let's process further the polling data, to assign a win or loss based upon the polling percentages. If the poll is tied, a random draw from the binomial distribution is performed. 
+The implementation for this is a bit weird, since we have a time 0 where the candidates are seeded. But before we apply this to our data, first let's process further the basic polling and assigning a win or loss based upon the polling percentages to generate our $outcome$. If the poll is tied, a random draw from the binomial distribution is performed.
 
 ```{r, code_folding = TRUE}
 proc_data <- proc_data %>% 
@@ -213,7 +215,7 @@ proc_data <- proc_data %>%
 rmarkdown::paged_table(proc_data)
 ```
 
-Applying our elo sequences model for all states with different $K$-factors and initializations  
+Applying our elo sequences model for all states.
 
 ```{r, echo=TRUE, warning=FALSE, code_folding=TRUE}
 get_elo_all_states <- function(proc_data, prior, K=50, init=1000){
@@ -228,14 +230,16 @@ get_elo_all_states <- function(proc_data, prior, K=50, init=1000){
 elo_sequences <- get_elo_all_states(proc_data, prior)
 elo_sequences <- elo_sequences %>% rowwise() %>% mutate(prob = win_prob(r1 = JB, r2 = DT)$p1)
 rmarkdown::paged_table(elo_sequences)
-```  
+```
 
-### Final probabilities using Monte Carlo simulations   
+### Final probabilities using Monte Carlo simulations
 
-Finally, we perform elo modeling at the state level, then use those probabilities to randomly draw a number of simulations based on a Bernoulli process. We calculate the final probability of winning as the number of simulations where a focal candidate (in this case Biden) gains 270 or more Electoral Votes. 
+To determine the final probability of winning the election, we take our state-level probabilities and simulate binomial draws with our probabilities. This is similar to how FiveThirtyEight performs their final modelling as well. The final win chance is therefore the the number of simulations where a focal candidate (in this case Biden) gains 270 or more Electoral Votes.
 
 <aside>
-Processing electoral votes data 
+
+Processing electoral votes data
+
 ```{r, echo=TRUE, code_folding=TRUE}
 electoral_votes <- jsonlite::fromJSON("data/electoral_votes.json")
 electoral_votes <- do.call(rbind, electoral_votes) 
@@ -244,9 +248,10 @@ electoral_votes <- electoral_votes %>% as.data.frame() %>% rename("votes" = "V1"
   mutate(state = map_chr(state, get_stname)) %>%
   na.omit() %>% as_tibble()
 ```
+
 </aside>
 
-Let's create a function that wraps all of this together in one go:  
+Let's create another wrapper function that wraps all of this together in one go:
 
 ```{r, echo=TRUE, warning=FALSE}
 elo_predict <- function(proc_data, prior, e_votes, K = 50, init = 1000, n_iter = 1000){
@@ -272,17 +277,17 @@ elo_predict <- function(proc_data, prior, e_votes, K = 50, init = 1000, n_iter =
 }
 ```
 
-## Results  
+## Results
 
-Now that we have everything set up, let's perform some predictions!  
-Let's start with a reasonable assumption of $K = 50$ and the initial elo seeding of $1000$. Since elo operates mostly from the differences in elo rankings, the initial elo seeding is not as important for this application. If you are interested in building more complex elo systems with provisional placements and tons of players, then this issue would be more relevant. We're also going to set it by default to be around 1000 iterations.  
+Now that we have everything set up, let's perform some predictions!\
+We use the default $K$-factor of 50 and the initial elo seeding of 1000 with 1000 simulations. Since elo operates mostly from the differences in elo rankings, the initial elo seeding is not as important.
 
 ```{r, code_folding=TRUE}
 pred <- elo_predict(proc_data = proc_data, prior = prior, e_votes = electoral_votes, K = 50, init = 1000)
 rmarkdown::paged_table(pred$preds)
 ```
-With our predictions, we can tally up the number of times the focal candidate JB wins over 270 electoral votes, which can get us an estimate of the overall probability. We can also do some bootstrap resamplings of the already generated 1000 simulations to get an bootstrapped interval.    
 
+With our predictions, we can tally up the number of times the focal candidate JB wins over 270 electoral votes, which can get us an estimate of the overall probability. We can also do some bootstrap resamplings of the already generated 1000 simulations to get an bootstrapped interval.
 
 ```{r, code_folding= TRUE}
 vote_counts <- colSums(pred$preds[,-1]) %>% unname()
@@ -297,7 +302,7 @@ glue("Win probability of Biden is {prob}% ({lower}% - {upper}%)",
      prob = probability, lower = quantile(boot, 0.025), upper = quantile(boot, 0.975))
 ```
 
-This is a pretty reasonable assumption. Let's explore the uncertainty around our probability model a bit further. Let's first visualize the distribution of votes across all simulations  
+This is a pretty reasonable assumption. Let's explore the uncertainty around our probability model a bit further. Let's first visualize the distribution of votes across all simulations
 
 ```{r, code_folding=TRUE, layout = "l-body"}
 qtile <- quantile(vote_counts, probs = c(0.025, 0.975))
@@ -317,7 +322,8 @@ qplot(x = vote_counts, geom = "histogram", fill = I("#5657B8"), alpha = I(0.8), 
   theme(text = element_text(famil = "Roboto", size = 13))
 
 ```
-We can visualize the trajectory of elo for each state. Let's take three states: California, Pennsylvania and Arkansas. These three states represents three types of states you would usually see: a blue state, a swing state and a red state. 
+
+We can visualize the trajectory of elo for each state. Let's take three states: California, Pennsylvania and Arkansas. These three states represents three types of states you would usually see: solidly blue, swing, and solidly red.
 
 ```{r, code_folding = TRUE, layot = "l-body"}
 seq <- pred$elo_seq
@@ -330,9 +336,9 @@ ggplot(seq, aes(x = week, y = value, col = name)) + geom_line() + geom_point() +
        title = "Weekly elo rankings for each candidate") + theme(text = element_text(family = "Roboto"))
 ```
 
-The elo rankings here makes sense. For California and Montana, both are states that have been dominated by Democrats and Republications respectively, the elo starts higher for the candidate belonging to each party, and continue to increase throughout the week due to good polling. The margin of victory also scales accordingly, where the rate of elo gain for Biden in California and Montana are really high. Conversely, Pennsylvania, while right now heading in Biden's direction, do not change as much. The margin of victory was probably too small to generate a wide gap as that of the other two states, indicating a close race.  
+The elo rankings here makes sense. For states like California and Montana whose political affiliation is well known, the elo difference is larger, and continue to increase throughout the week due to good polling. The margin of victory also scales accordingly, where the rate of elo gain for Biden in California and Montana are really high. Conversely, Pennsylvania, while right now heading in Biden's direction, do not change as much. The margin of victory was probably too small to generate a wide gap as that of the other two states, indicating a close race. However, it seems that the polling is good enough for Joe Biden to overcome the results of the 2016 election.
 
-Finally, let's generate a fun visual similar to FiveThirtyEight's bubble plots!  
+Finally, let's generate a fun visual similar to FiveThirtyEight's bubble plots!
 
 ```{r, code_folding=TRUE, preview = TRUE, layout = "l-body"}
 set.seed(1234)
@@ -355,4 +361,12 @@ ggplot(counts, aes(x = cat, y = counts, col = win)) + geom_jitter(size = 5, alph
            label = glue("Chance of winning \n {val} in 100", val = sum(counts$counts >= 0))) 
 ```
 
+# Conclusions
 
+While this model is something I made for fun, it's cool to learn about elo as a way to explore topics relating to modelling competitions such as sports. The elo sequence somehow strangely makes sense in this case, presenting a pretty acceptable picture of the electoral landscape. Some additional things that could be explored further:
+
+-   A random effects logistic regression model for elo can be fitted to not just control for temporal effects (since our data is longitudinal), but can also allow the mean of elo scores per week to vary with other predictors that are considered core in the election forecasting field.\
+-   A better way to incorporate margin of victory can help with states just converging to almost 100% win probability.\
+-   More sensitivity analysis with K-factors and adjusting elo gains and losses.
+
+That said, this was super fun! Hope this write-up was enjoyable!

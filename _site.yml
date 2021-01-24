@@ -1,5 +1,6 @@
 name: "qpmnguyen-blog"
 title: "Limit Testing"
+theme: quang.css
 description: |
   Different modelling projects and random thoughts about stuff
 output_dir: "_site"

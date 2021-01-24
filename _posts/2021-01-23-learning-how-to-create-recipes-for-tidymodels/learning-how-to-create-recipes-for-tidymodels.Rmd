@@ -1,0 +1,28 @@
+---
+title: "Learning how to create recipes for tidymodels"
+description: |
+  Trying to learn to create custom recipes for the `recipes` package
+author:
+  - name: Quang Nguyen
+    url: {https://qpmnguyen.netlify.app}
+date: 01-23-2021
+categories:
+  - rstats
+  - learning
+  - tidymodels
+output:
+  distill::distill_article:
+    self_contained: false
+    toc: true
+    toc_float: true
+draft: true
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+
+
+
