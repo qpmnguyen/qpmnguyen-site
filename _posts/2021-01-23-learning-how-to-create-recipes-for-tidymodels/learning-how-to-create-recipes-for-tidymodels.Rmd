@@ -5,7 +5,7 @@ description: |
 author:
   - name: Quang Nguyen
     url: {https://qpmnguyen.netlify.app}
-date: 01-23-2021
+date: 01-24-2021
 categories:
   - rstats
   - learning
