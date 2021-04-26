@@ -1,0 +1,67 @@
+---
+title: "Projects"
+description: |
+  My projects.
+output: 
+  distill::distill_article:
+    css: quang.css
+---
+
+```{r setup, include=FALSE}
+library(htmltools)
+source("R/html_utils.R")
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+## Software  
+
+```{r}
+create_card(
+  url = "https://qpmnguyen.shinyapps.io/difuse_2020/",
+  title = "Eddy Covariance Exploration Shiny App",
+  source = "https://github.com/difuse-dartmouth/DIFUSE_2020_EddyCovariance",
+  description = "BIOL 16 is a course that examines fundamental concepts in the rapidly developing areas of ecology. As an part of the DIFUSE program funded by NSF at Dartmouth College, we built an interactive data visualization and analysis tool based on R Shiny for students to explore the eddy covariance technique. Students are able to view data in raw format, interact with different visualizations, as well as being able to use such data to learn about how carbon exchange differs between seasons and time of day.",
+  tech = c("R", "Shiny", "plotly")
+)
+```
+  
+
+```{r}
+create_card(
+  title = "microbesim: An R package for quick simulation of microbiome count data",
+  source = "https://github.com/qpmnguyen/microbesim",
+  description = "In order to develop and apply data analysis techniques to microbiome relative abundance data, researchers often have to perform numerical simulations that approximate real data. This R package was developed in order to collect together all the common ways to simulate microbiome relative abundance data and provide a uniform interface for quick-and-dirty simulations.",
+  tech = c("R")
+)
+```
+
+## Analyses and visualizations  
+
+```{r}
+create_card(
+  url = "https://limit-testing.netlify.app/extras/flexdash.html",
+  source = "https://github.com/qpmnguyen/qn_tidytuesday",
+  title = "Tidy Tuesday submission dashboard",
+  description = "This is my personal submission Tidy Tuesday is a weekly online event hosted by the R4DS community to promote usage of R in data wrangling and visualization. Every week a new data set is distributed where participants are welcome to perform modelling, wranging and visualization.",
+  tech = c("R", "flexdashboard", "tidyverse")
+)
+```
+
+```{r}
+create_card(
+  url = NULL,
+  title = "Forecasting presidential elections using Elo Rankings",
+  description = "Using probability models based on Elo rankings (rankings used in zero-sum games such as chess) as a way to predict US presidential elections.",
+  tech = c("Julia", "R", "distill"),
+  source = "https://github.com/qpmnguyen/elo_presidente"
+)
+#https://mybinder.org/v2/gh/fonsp/pluto-on-binder/master?urlpath=pluto/open?url=https%253A%252F%252Fgithub.com%252Fqpmnguyen%252Felo_presidente%252Fblob%252Fmaster%252Fanalysis.jl%253Fraw%253Dtrue
+```
+
+
+
+
+
+
+
+

@@ -1,6 +1,0 @@
----
-title: "Gallery of complete data analysis projects"
-listing:
-    posts:
-        2021-01-10-election-prediction-using-elo
----

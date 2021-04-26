@@ -1,7 +1,7 @@
 ---
 title: "Estimating new COVID-19 variant from UK surveillance data using a Bayesian approach"
 description: |
-  A short description of the post.
+  Estimating the prevalence of the B.1.1.7. variant among cases using a Bayesian approach to Poisson regression.  
 author:
   - name: Quang Nguyen
     url: {https://qpmnguyen.netlify.app}
@@ -19,17 +19,18 @@ bibliography: references.bib
 knitr::opts_chunk$set(echo = TRUE, code_folding=TRUE)
 ```
 
-```{r}
+```{r, message=FALSE}
 library(tidyverse)
 library(cmdstanr)
 library(readr)
 library(lubridate)
 library(splines)
-cmdstanr::set_cmdstan_path("E:/Software/cmdstan/cmdstan-2.25.0/")
-cmdstanr::register_knitr_engine()
+library(patchwork)
+library(posterior)
+library(bayesplot)
 ```
 
-# The SARS-CoV-2 variant B.1.1.7  
+# The SARS-CoV-2 variant B.1.1.7
 
 The data that we have right now is based on UK surveillance data from the [COVID-19 Genomics Consortium (COG)](https://www.cogconsortium.uk/)
 
@@ -80,14 +81,19 @@ ggplot(counts, aes(x = date, y = prop)) + geom_point(col = "steelblue", size = 2
 It seems that the number of cases with the variant is increasing in a non-linear fashion with some plateauing effect. However, we don't really want to model just the proportion of samples being positive, since it is naturally bounded between 0 and 1 (hence the plateau effect) and at some point most surveys would return either 0 or 1 relative abundance anyways. Ideally we would be able to obtain something similar to We would want to fit a time series model that incorporates the raw counts directly, controlling for the number of samples sequenced. First, let's plot the total number detected strains
 
 ```{r}
-ggplot(counts, aes(x = date, y = strain_detect)) + geom_point(col = "steelblue", size = 2) + 
+p1 <- ggplot(counts, aes(x = date, y = strain_detect)) + geom_point(col = "steelblue", size = 2) + 
   theme_bw() + geom_smooth() +
-  labs(y = "Number of counts with B.1.1.7", x = "Week Ending Date")
+  labs(y = "Number of sequenced samples identified as B.1.1.7", 
+       x = "Week Ending Date")
+p2 <- ggplot(counts, aes(x = date, y = tot_samples)) + 
+    geom_bar(stat = "identity", fill = "steelblue") + 
+    theme_bw() + labs(y = "Total samples sequenced", x = "Week Ending Date")
+p1 + p2
 ```
 
 # Non-linear Poisson Regression Model with Offset using a Bayesian approach
 
-## Model specification  
+## Model specification
 
 For the purposes of this exercise, we want to utilize a Bayesian approach. The approach will allow us to quantify the uncertainty of the parameters and predictions, while also enabling a very flexible fitting procedure using Stan probabilistic programming language.
 
@@ -96,7 +102,7 @@ For the sake of simplicity, we're going to estimate a non-linear trend (as obser
 [^1]: Hyndman, R.J., & Athanasopoulos, G. (2021) *Forecasting: principles and practice*, 3rd edition, OTexts: Melbourne, Australia. OTexts.com/fpp3. Accessed on 03/14/2021
 
 $$
-(y_t) = \beta_0 + \beta_1t^2 + \epsilon_t
+y_t = \beta_0 + \beta_1t^2 + \epsilon_t
 $$
 
 However, using outcomes as raw counts of sequences detected as the VOC is unfair, since each day there are a different number of case samples sequenced. As such, we want to add an offset term. An offset term can be used in the context of modeling rates from count data and is usually the number of "trials", or in this case, the number of samples sequenced each week. As such, we have:
@@ -109,7 +115,7 @@ Before we fit our model, first we have to figure out the priors for our paramete
 
 [^2]: <https://mc-stan.org/rstanarm/articles/priors.html>
 
-## Prior predictive simulation  
+## Prior predictive simulation
 
 One benefit of the Bayesian approach is that we are specifying a data generating model and specify prior beliefs on the distribution of the outcome we're trying to model. This means we can triage our choice of prior distribution by actually simulating the outcome from our priors and observe whether the ranges make sense (it doesn't have to fit our real data since we haven't really updated our prior beliefs yet!). We can do this easily in `R` since our model is simple:
 
@@ -147,12 +153,39 @@ $$
 
 Let's try it out!
 
-```{r}
+```{r, preview = TRUE}
 n_iter <- 100
 offset <- log(counts$tot_samples)
-t <- scale(counts$dod, scale = T)
+#t <- scale(counts$dod, scale = T)
 t <- counts$dod
-b1 <- rnorm(n_iter, 0, 0.054)
+b1 <- rnorm(n_iter, 0, 25/46)
+b0 <- rnorm(n_iter, 0, 2.5)
+sigma <- rexp(n_iter, 1)  
+outcome <- matrix(nrow = length(t), ncol = n_iter)
+for (i in seq_len(n_iter)){
+    outcome[,i] <- b1[i] * t^2 + b0[i] + offset
+}
+colnames(outcome) <- paste0("iter",seq_len(n_iter))
+df <- dplyr::bind_cols(t = t, outcome) %>% 
+    pivot_longer(cols = -t, names_to = "iter", 
+                 values_to = "log_counts") %>% 
+    mutate(counts = exp(log_counts))
+
+ggplot(df, aes(x = t, y = log_counts, group = iter)) + 
+    geom_line(col = "steelblue") +
+    theme_bw() + 
+    labs(x = "Days since Detection", y = "Log Counts") + 
+    geom_hline(yintercept = max(log(counts$strain_detect)), col = "red")
+```
+
+Now the prior predictive simulations look more reasonable. The log count values are between around -2500 and 5000, which are still out of bounds for what we expect would find for log counts. We can re-scale the prior distribution further
+
+```{r, preview = TRUE}
+n_iter <- 100
+offset <- log(counts$tot_samples)
+#t <- scale(counts$dod, scale = T)
+t <- counts$dod
+b1 <- rnorm(n_iter, 0, 0.005)
 b0 <- rnorm(n_iter, 0, 2.5)
 sigma <- rexp(n_iter, 1)  
 outcome <- matrix(nrow = length(t), ncol = n_iter)
@@ -166,7 +199,46 @@ df <- dplyr::bind_cols(t = t, outcome) %>%
     mutate(counts = exp(log_counts))
 ggplot(df, aes(x = t, y = log_counts, group = iter)) + 
     geom_line(col = "steelblue") +
-    geom_abline() + theme_bw() + 
+    theme_bw() + 
     labs(x = "Days since Detection", y = "Log Counts") + 
     geom_hline(yintercept = max(log(counts$strain_detect)), col = "red")
+```
+
+## Fitting the model
+
+Even though the estimates are still pretty off, the scales are closer to what we would expect. Let's fit a stan model according to the specifications we have above
+
+```{r, cache = T}
+file <- "scripts/pois_model.stan"
+mod <- cmdstanr::cmdstan_model(file)
+mod$print()
+
+```
+
+```{r, cache = TRUE, cache.extra = Sys.Date(), message=FALSE, results = 'hide'}
+data_list <- list(
+    N = nrow(counts),
+    counts = counts$strain_detect,
+    offset = counts$tot_samples,
+    dod = counts$dod
+)
+
+fit <- mod$sample(
+    data = data_list,
+    seed = 1020, 
+    max_treedepth = 20,
+    refresh = 500
+)
+
+```
+
+### Model Diagnostics
+
+```{r}
+fit$cmdstan_diagnose()
+fit$summary()
+```
+
+```{r}
+sessionInfo()
 ```
