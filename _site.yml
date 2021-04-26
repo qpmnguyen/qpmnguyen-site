@@ -3,7 +3,7 @@ title: "Quang P. Nguyen"
 description: |
   Quang Nguyen's personal website 
 output_dir: "_site"
-google_analytics: "G-8HDEP6XR5D"
+google_analytics: "G-00XM1S762Z"
 exclude: ["*.csv"]
 base_url: "https://limit-testing.netlify.app/"
 collections:
