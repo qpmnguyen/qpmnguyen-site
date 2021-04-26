@@ -19,7 +19,7 @@ output:
 
 ## Bio  
 
-I am a Ph.D. candidate in the Quantitative Biomedical Sciences program at Dartmouth. I'm interested in developing statistical and bioinformatic tools bridging epidemiology and genomics through novel methods in feature engineering and selection. My work mostly focuses on the infant gut microbiome, early life exposures and childhood diseases. You can find me on [Github](https://github.com/qpmnguyen), [LinkedIn](https://www.linkedin.com/in/qpmnguyen/), [Google Scholar](https://scholar.google.com/citations?user=Y5jqD-IAAAAJ&hl=en) and [Twitter](https://twitter.com/quangpmnguyen).   
+I am a Ph.D. candidate in the Quantitative Biomedical Sciences program at Dartmouth. I'm interested in developing statistical and bioinformatic tools to bridge population health research and genomic assays through novel feature selection and feature engineering. My work mostly focuses on the infant gut microbiome, early life exposures and childhood diseases. You can find me on [Github](https://github.com/qpmnguyen), [LinkedIn](https://www.linkedin.com/in/qpmnguyen/), [Google Scholar](https://scholar.google.com/citations?user=Y5jqD-IAAAAJ&hl=en) and [Twitter](https://twitter.com/quangpmnguyen).   
 
 ## Education   
 Dartmouth College - Ph.D. in Quantitative Biomedical Sciences | 2017-2022    
@@ -27,7 +27,7 @@ Bates College - B.S. in Mathematics and Biochemistry | 2013-2017
 
 
 ## Experiences  
-* Biostatistics Intern - Exploratory Data Analysis, Regeneron Pharmaceuticals | Jun - Aug, 2021    
+* Biostatistics Intern - Regeneron Pharmaceuticals | Jun - Aug, 2021    
 * Data Quality and Science Communication - The COVID Tracking Project at The Atlantic | March, 2020 - March, 2021    
 * Statistical Consultant - Dartmouth Hitchcock Analytic Institute | 2019 - Current   
 
