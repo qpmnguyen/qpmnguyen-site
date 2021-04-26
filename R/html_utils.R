@@ -3,7 +3,7 @@
 create_card <- function(title=NULL, description=NULL, tech=NULL, source=NULL, url=NULL, img_src=NULL){
     # create defaults  
     if (is.null(img_src)){
-        img_src <- "images/wip.jpg"
+        img_src <- "images/wip.png"
     }
     if (is.null(url)){
         url <- "https://www.example.com"

@@ -39,17 +39,17 @@ create_card(
 
 ```{r}
 create_card(
-  url = "https://limit-testing.netlify.app/extras/flexdash.html",
+  url = "https://www.qpmnguyen.com/extras/flexdash.html",
   source = "https://github.com/qpmnguyen/qn_tidytuesday",
   title = "Tidy Tuesday submission dashboard",
-  description = "This is my personal submission Tidy Tuesday is a weekly online event hosted by the R4DS community to promote usage of R in data wrangling and visualization. Every week a new data set is distributed where participants are welcome to perform modelling, wranging and visualization.",
+  description = "This is a dashboard for all my #TidyTuesday submissions. #TidyTuesday is a weekly online event hosted by the R4DS community to promote usage of R in data wrangling and visualization. Every week a new data set is distributed where participants are welcome to perform modelling, wranging and visualization.",
   tech = c("R", "flexdashboard", "tidyverse")
 )
 ```
 
 ```{r}
 create_card(
-  url = NULL,
+  url = "https://www.qpmnguyen.com/posts/2021-01-10-election-prediction-using-elo/",
   title = "Forecasting presidential elections using Elo Rankings",
   description = "Using probability models based on Elo rankings (rankings used in zero-sum games such as chess) as a way to predict US presidential elections.",
   tech = c("Julia", "R", "distill"),

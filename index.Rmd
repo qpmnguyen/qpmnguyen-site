@@ -11,7 +11,7 @@ links:
   - label: Email
     url: "mailto:quangpmnguyen@gmail.com"  
   - label: CV
-    url: "https://limit-testing.netlify.app/extras/qn_cv.pdf"
+    url: "https://www.qpmnguyen.com/extras/qn_cv.pdf"
 site: distill::distill_website
 output: 
     postcards::trestles
