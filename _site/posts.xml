@@ -2,8 +2,8 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:dc="http://purl.org/dc/elements/1.1/" version="2.0">
   <channel>
     <title>Quang P. Nguyen</title>
-    <link>https://limit-testing.netlify.app/</link>
-    <atom:link href="https://limit-testing.netlify.app/posts.xml" rel="self" type="application/rss+xml"/>
+    <link>https://www.qpmnguyen.com</link>
+    <atom:link href="https://www.qpmnguyen.com/posts.xml" rel="self" type="application/rss+xml"/>
     <description>Quang Nguyen's personal website 
 </description>
     <generator>Distill</generator>
@@ -11,14 +11,14 @@
     <item>
       <title>Election prediction using Elo</title>
       <dc:creator>Quang Nguyen</dc:creator>
-      <link>https://limit-testing.netlify.app/posts/2021-01-10-election-prediction-using-elo</link>
+      <link>https://www.qpmnguyen.com/posts/2021-01-10-election-prediction-using-elo</link>
       <description>A fun project to predict the 2020 presidential election using weekly average polling data and Elo models</description>
       <category>fun</category>
       <category>elo modelling</category>
       <category>prediction</category>
-      <guid>https://limit-testing.netlify.app/posts/2021-01-10-election-prediction-using-elo</guid>
+      <guid>https://www.qpmnguyen.com/posts/2021-01-10-election-prediction-using-elo</guid>
       <pubDate>Sun, 10 Jan 2021 00:00:00 +0000</pubDate>
-      <media:content url="https://limit-testing.netlify.app/posts/2021-01-10-election-prediction-using-elo/election-prediction-using-elo_files/figure-html5/unnamed-chunk-12-1.png" medium="image" type="image/png" width="1248" height="768"/>
+      <media:content url="https://www.qpmnguyen.com/posts/2021-01-10-election-prediction-using-elo/election-prediction-using-elo_files/figure-html5/unnamed-chunk-12-1.png" medium="image" type="image/png" width="1248" height="768"/>
     </item>
   </channel>
 </rss>

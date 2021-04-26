@@ -5,7 +5,7 @@ description: |
 output_dir: "_site"
 google_analytics: "G-00XM1S762Z"
 exclude: ["*.csv"]
-base_url: "https://limit-testing.netlify.app/"
+base_url: "https://www.qpmnguyen.com"
 collections:
   posts:
     categories: true
