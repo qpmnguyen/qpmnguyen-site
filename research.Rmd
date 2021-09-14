@@ -15,13 +15,13 @@ Broadly speaking, I'm interested in leveraging external information for variable
 
 *Associations between the gut microbiome and the metabolome in early life*  
 **Quang P Nguyen**, Margaret R. Karagas, Juliette C. Madan, Erika Dade, Tom J. Palys, Hilary G. Morrison, Wimal W. Pathmasiri, Susan McRitche, Susan J. Sumner, H. Robert Frost, Anne G. Hoen  
-[[Source Code](https://github.com/qpmnguyen/infant_metabolome_microbiome)] [[Pre-print](https://www.researchsquare.com/article/rs-79308/v1)]    
-*Under Review at BMC Microbiology*  
+[[Source Code](https://github.com/qpmnguyen/infant_metabolome_microbiome)] [[Manuscript](https://bmcmicrobiol.biomedcentral.com/articles/10.1186/s12866-021-02282-3)]    
 **Abstract:** The infant intestinal microbiome plays an important role in metabolism and immune development with impacts on lifelong health. The linkage between the taxonomic composition of the microbiome and its metabolic phenotype is undefined and complicated by redundancies in the taxon-function relationships within microbial communities. To inform a more mechanistic understanding of the relationship between the microbiome and health, we performed an integrative statistical and machine learning-based analysis of microbe taxonomic structure and metabolic function in order to characterize the taxa-function relationship in early life.
 
-*cILR: Taxonomic enrichment analysis with competitive isometric log-ratios*  
+*cILR: Competitive isometric log-ratio for taxonomic enrichment analysis*  
 **Quang P Nguyen**, Anne G. Hoen, H. Robert Frost   
-*In Prep*  
+*Submitted*  
+[[Analysis Code](https://github.com/qpmnguyen/cILR_analysis)]  [[Package](https://github.com/qpmnguyen/teaR)]  [[Pre-print](https://www.biorxiv.org/content/10.1101/2021.09.07.459294v1)]  
 **Abstract:** High-dimensionality and sparsity are challenging problems in statistical analysis of microbiome relative abundance data. One approach is to aggregate taxa to sets, most commonly to Linnean taxonomic categories identified through classification of representative sequences. However, most researchers perform aggregation through the pairwise summation of counts, preventing comparison across sets of different sizes. We developed a taxa set enrichment method based on the isometric log-ratio transformation (cILR) for microbiome relative abundance data. Our method generates sample-specific taxa set enrichment scores with a well-defined null hypothesis corresponding to the Q2 competitive null hypothesis in the gene set testing literature. Significance testing was performed by estimating the empirical null distribution accounting for variance inflation due to inter-taxa correlation.   
 
 ### Co-author manuscripts  

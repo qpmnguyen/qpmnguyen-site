@@ -23,6 +23,7 @@
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
 div.sourceCode { margin: 1em 0; }
 pre.sourceCode { margin: 0; }
@@ -55,7 +56,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }
 code span.al { color: #ad0000; } /* Alert */
 code span.an { color: #5e5e5e; } /* Annotation */
-code span.at { } /* Attribute */
+code span.at { color: #20794d; } /* Attribute */
 code span.bn { color: #ad0000; } /* BaseN */
 code span.bu { } /* BuiltIn */
 code span.cf { color: #007ba5; } /* ControlFlow */
@@ -76,7 +77,7 @@ code span.kw { color: #007ba5; } /* Keyword */
 code span.op { color: #5e5e5e; } /* Operator */
 code span.ot { color: #007ba5; } /* Other */
 code span.pp { color: #ad0000; } /* Preprocessor */
-code span.sc { color: #5e5e5e; } /* SpecialChar */
+code span.sc { color: #20794d; } /* SpecialChar */
 code span.ss { color: #20794d; } /* SpecialString */
 code span.st { color: #20794d; } /* String */
 code span.va { color: #111111; } /* Variable */
@@ -1861,10 +1862,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 
       // hoverable references
       $('span.citation[data-cites]').each(function() {
-        var refs = $(this).attr('data-cites').split(" ");
-        var refHtml = refs.map(function(ref) {
-          return "<p>" + $('#ref-' + ref).html() + "</p>";
-        }).join("\n");
+        var refHtml = $('#ref-' + $(this).attr('data-cites')).html();
         window.tippy(this, {
           allowHTML: true,
           content: refHtml,
@@ -2418,7 +2416,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
     color: var(--hover-color, white);
   }</style>
   <!--/radix_placeholder_distill-->
-  <script src="site_libs/header-attrs-2.7.12/header-attrs.js"></script>
+  <script src="site_libs/header-attrs-2.8/header-attrs.js"></script>
   <script src="site_libs/popper-2.6.0/popper.min.js"></script>
   <link href="site_libs/tippy-6.2.7/tippy.css" rel="stylesheet" />
   <link href="site_libs/tippy-6.2.7/tippy-light-border.css" rel="stylesheet" />
@@ -2490,12 +2488,12 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <h3 id="first-author-manuscripts">First-author manuscripts</h3>
 <p><em>Associations between the gut microbiome and the metabolome in early life</em><br />
 <strong>Quang P Nguyen</strong>, Margaret R. Karagas, Juliette C. Madan, Erika Dade, Tom J. Palys, Hilary G. Morrison, Wimal W. Pathmasiri, Susan McRitche, Susan J. Sumner, H. Robert Frost, Anne G. Hoen<br />
-[<a href="https://github.com/qpmnguyen/infant_metabolome_microbiome">Source Code</a>] [<a href="https://www.researchsquare.com/article/rs-79308/v1">Pre-print</a>]<br />
-<em>Under Review at BMC Microbiology</em><br />
+[<a href="https://github.com/qpmnguyen/infant_metabolome_microbiome">Source Code</a>] [<a href="https://bmcmicrobiol.biomedcentral.com/articles/10.1186/s12866-021-02282-3">Manuscript</a>]<br />
 <strong>Abstract:</strong> The infant intestinal microbiome plays an important role in metabolism and immune development with impacts on lifelong health. The linkage between the taxonomic composition of the microbiome and its metabolic phenotype is undefined and complicated by redundancies in the taxon-function relationships within microbial communities. To inform a more mechanistic understanding of the relationship between the microbiome and health, we performed an integrative statistical and machine learning-based analysis of microbe taxonomic structure and metabolic function in order to characterize the taxa-function relationship in early life.</p>
-<p><em>cILR: Taxonomic enrichment analysis with competitive isometric log-ratios</em><br />
+<p><em>cILR: Competitive isometric log-ratio for taxonomic enrichment analysis</em><br />
 <strong>Quang P Nguyen</strong>, Anne G. Hoen, H. Robert Frost<br />
-<em>In Prep</em><br />
+<em>Submitted</em><br />
+[<a href="https://github.com/qpmnguyen/cILR_analysis">Analysis Code</a>] [<a href="https://github.com/qpmnguyen/teaR">Package</a>] [<a href="https://www.biorxiv.org/content/10.1101/2021.09.07.459294v1">Pre-print</a>]<br />
 <strong>Abstract:</strong> High-dimensionality and sparsity are challenging problems in statistical analysis of microbiome relative abundance data. One approach is to aggregate taxa to sets, most commonly to Linnean taxonomic categories identified through classification of representative sequences. However, most researchers perform aggregation through the pairwise summation of counts, preventing comparison across sets of different sizes. We developed a taxa set enrichment method based on the isometric log-ratio transformation (cILR) for microbiome relative abundance data. Our method generates sample-specific taxa set enrichment scores with a well-defined null hypothesis corresponding to the Q2 competitive null hypothesis in the gene set testing literature. Significance testing was performed by estimating the empirical null distribution accounting for variance inflation due to inter-taxa correlation.</p>
 <h3 id="co-author-manuscripts">Co-author manuscripts</h3>
 <p>Jie Zhou, Anne G Hoen, Susan Mcritchie, Wimal Pathmasiri, Weston D Viles, <strong>Quang P Nguyen</strong>, Juliette C Madan, Erika Dade, Margaret R Karagas, Jiang Gui. Information enhanced model selection for Gaussian graphical model with application to metabolomic data. Biostatistics, 2021;, kxab006, <a href="https://doi.org/10.1093/biostatistics/kxab006" class="uri">https://doi.org/10.1093/biostatistics/kxab006</a></p>
