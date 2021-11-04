@@ -35,3 +35,4 @@ Bates College - B.S. in Mathematics and Biochemistry | 2013-2017
 * Statistical analysis using R (4 years), Python (2 years), and Julia (1 year).    
 * Running bioinformatic tools, specifically microbiome specific pipelines.    
 * Shiny, Snakemake, Git, HPC, Pluto.jl      
+* SQL (SQLite, MySQL)   
