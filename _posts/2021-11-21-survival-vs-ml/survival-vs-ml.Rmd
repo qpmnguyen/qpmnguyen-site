@@ -1,0 +1,193 @@
+---
+title: "Machine Learning based survival analysis using tidymodels"
+description: |
+  A short description of the post.
+author:
+  - name: Quang Nguyen
+    url: {https://qpmnguyen.com}
+date: 2021-11-21
+output:
+  distill::distill_article:
+    self_contained: false
+    code_folding: false
+    toc: true
+    toc_depth: 3
+draft: true
+bibliography: biblio.bib
+slug: survivalmlcomp
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+Packages:     
+
+```{r pkgs, message=FALSE}
+library(tidyverse, quietly = TRUE)
+library(tidymodels, quietly = TRUE)
+library(gtsummary)
+library(censored)
+library(dials)
+library(scales)
+library(survival)
+library(data.table)
+tidymodels_prefer()
+```
+
+# Background  
+
+## What is survival analysis  
+
+## Machine learning based approaches to censored regression  
+
+## The data set   
+
+
+This data set is from a recent manuscript by [@chicco2020].  
+
+We can load the data and check the columns  
+
+```{r load_data, code_folding=TRUE}
+data <- read.csv(file = file.path("data", "heart_failure.csv"))
+data <- data %>% mutate(
+  anaemia = as.factor(anaemia),
+  diabetes = as.factor(diabetes),
+  sex = as.factor(sex),
+  smoking = as.factor(smoking),
+  hbp = as.factor(high_blood_pressure),
+  death = as.factor(DEATH_EVENT)
+) %>% select(-c(high_blood_pressure, DEATH_EVENT))
+head(data, n = 5)
+```
+
+<details><summary>Table One summary</summary>  
+```{r table_one, echo=FALSE}
+gtsummary::tbl_summary(data)
+```
+</details>
+
+This is a really simple data set of around 299 patients with 13 variables. `death` is our outcome of interest which indicates whether the patient passed away due to heart failure within the follow-up period. The `time` variable indicates the total follow-up time in days. 
+
+In most cases, using a survival analysis approach is best for this type of data. It is likely that there is "right censoring", which means that the patient might still die of heart failure in the future, it's just that the patient dropped out of the study early or that the study had to end. According to [@Harrell2006], the most efficient way to model this type of data is to actually model the time-to-event, in this case represents the time (in days) until a patient experienced a fatal heart attack.  
+
+However, from a purely predictive perspective, it would be interesting to see whether or not machine learning models out-perform survival models when it comes to the 
+
+
+# Fitting models  
+
+## Defining a data preprocessing recipe  
+
+Preprocessing recipes for machine learning models means that we would want to remove the variable `time`  
+
+```{r preproc_recipe}
+surv_form <- as.formula(Surv(time, death) ~ .)
+```
+
+Define some standard models  
+
+```{r simple_mods}
+# logistic regression model 
+simple_lr <- logistic_reg() |>  set_engine("glm") 
+
+# random forest  
+simple_rf <- rand_forest(tree = 500, mtry = round(sqrt(ncol(data))), min_n = tune()) |> 
+  set_engine("ranger")
+```
+
+Define survival models  
+
+```{r surv_mods}
+# random forest 
+surv_rf <- rand_forest(trees = 500, min_n = tune(), mtry = round(ncol(data)/2,0)) |> set_engine("party")|> set_mode("censored regression")
+
+# boosted trees for survival 
+surv_btree <- boost_tree(trees = 500, mtry = round(ncol(data)/2,0), 
+                         min_n = tune(), tree_depth = tune()) |> set_engine("mboost") |> set_mode("censored regression")
+
+# penalized cox proportional hazards 
+surv_cox <- proportional_hazards(penalty = tune(), mixture = tune()) |> set_engine("glmnet") |> 
+  set_mode("censored regression")
+
+# standard survival regression  
+surv_reg <- survival_reg(dist = "weibull") %>%
+    set_engine("survival") %>% 
+    set_mode("censored regression")
+
+mod_list <- list(
+  survival_btree = surv_btree,
+  survival_cox = surv_cox,
+  survival_rf = surv_rf, 
+  survival_reg = surv_reg
+)
+```
+
+
+## Hyperparameter tuning and model selection using repeated cross validation  
+
+```{r create_folds}
+train_test <- initial_split(data, prop = 0.8)
+rep_folds <- vfold_cv(analysis(train_test), v = 3, repeats = 1)
+```
+
+## Perform hyperparameter tuning using a tuning grid  
+
+Since `tidymodels` so far do not have support for tuning survival models, we can perform it manually using some custom functions  
+
+```{r tune_param_ft}
+# this function generates parameter grids and generate corresponding list of models  
+generate_models <- function(model, grid_size){
+  param <- dials::parameters(model)
+  fit_grid <- dials::grid_latin_hypercube(param, size = grid_size)
+  all_models <- vector(mode = "list", length = grid_size)
+  for (i in seq_along(all_models)){
+    all_models[[i]] <- update(model, parameters = slice(fit_grid,i))
+  }
+  fit_grid <- fit_grid |> mutate(models = all_models)
+  return(fit_grid)
+}
+
+eval_mod <- function(model, split){
+  train <- analysis(split)
+  test <- assessment(split)
+  fitted <- fit(model, formula = surv_form, data = train)
+  test %>% as_tibble() %>% rowwise() %>% 
+    mutate(pred = predict(fitted, ., type = "survival", time = time))
+  pred <- predict(fitted, test, type = "survival", time = as.list(test$time))
+  return(concordance(Surv(time, death) ~ pred, test)$concordance)
+}
+
+
+
+eval_mod(model = fitted_grid$models[[1]], split = fitted_grid$splits[[1]])
+
+# evaluate list of models across tuning grid
+tune_mods <- function(model_list, resamples){
+  # using crossing to keep things straight but will be bad for memory if data is large 
+  # if scaling to large grids/data/models use crossing for identifiers instead of adding the entire objects 
+  fitted_grid <- crossing(
+    resamples, 
+    model_list
+  ) |> as.data.table()
+  res <- fitted_grid |> rowwise() |> 
+    mutate(results = eval_mod(model = models, split = splits)) |> ungroup()
+}
+
+```
+
+## Plot and collect results from fitting models  
+
+```{r}
+
+```
+
+
+
+# Session information  
+
+<details><summary>Session info</summary>  
+```{r session_info}
+sessionInfo()
+```
+</details>
