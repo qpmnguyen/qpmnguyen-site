@@ -148,20 +148,23 @@ generate_models <- function(model, grid_size){
   return(fit_grid)
 }
 
+mod <- generate_models(mod_list[[1]], grid_size = 10)
+
+```
+```{r}
 eval_mod <- function(model, split){
   train <- analysis(split)
   test <- assessment(split)
   fitted <- fit(model, formula = surv_form, data = train)
-  test %>% as_tibble() %>% rowwise() %>% 
-    mutate(pred = predict(fitted, ., type = "survival", time = time))
-  pred <- predict(fitted, test, type = "survival", time = as.list(test$time))
+  pred <- predict(fitted, test, type = "linear_pred")
+  test$pred <- pred$.pred_linear_pred
   return(concordance(Surv(time, death) ~ pred, test)$concordance)
 }
 
-
-
 eval_mod(model = fitted_grid$models[[1]], split = fitted_grid$splits[[1]])
+```
 
+```{r}
 # evaluate list of models across tuning grid
 tune_mods <- function(model_list, resamples){
   # using crossing to keep things straight but will be bad for memory if data is large 
