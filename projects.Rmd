@@ -14,12 +14,21 @@ knitr::opts_chunk$set(echo = FALSE)
 ```
 
 ## Software  
+```{r}
+create_card(
+  title = "CBEA: Competitive balances for taxonomic enrichment analysis",
+  source = "https://github.com/qpmnguyen/CBEA",
+  description = "R package for performing enrichment analysis using the CBEA approach. Contains additional support function for generalized set enrichment analysis for microbiome data",
+  tech = c("R"),
+  img_src = "images/hex-CBEA.png"
+)
+```
 
 ```{r}
 create_card(
-  url = "https://qpmnguyen.shinyapps.io/difuse_2020/",
+  url = "https://difuse-dartmouth.shinyapps.io/DIFUSEEddyCovariance/",
   title = "Eddy Covariance Exploration Shiny App",
-  source = "https://github.com/difuse-dartmouth/DIFUSE_2020_EddyCovariance",
+  source = "https://github.com/difuse-dartmouth/20x_BIO16",
   description = "BIOL 16 is a course that examines fundamental concepts in the rapidly developing areas of ecology. As an part of the DIFUSE program funded by NSF at Dartmouth College, we built an interactive data visualization and analysis tool based on R Shiny for students to explore the eddy covariance technique. Students are able to view data in raw format, interact with different visualizations, as well as being able to use such data to learn about how carbon exchange differs between seasons and time of day.",
   tech = c("R", "Shiny", "plotly")
 )
@@ -37,27 +46,15 @@ create_card(
 
 ## Analyses and visualizations  
 
-```{r}
-create_card(
-  url = "https://www.qpmnguyen.com/extras/flexdash.html",
-  source = "https://github.com/qpmnguyen/qn_tidytuesday",
-  title = "Tidy Tuesday submission dashboard",
-  description = "This is a dashboard for all my #TidyTuesday submissions. #TidyTuesday is a weekly online event hosted by the R4DS community to promote usage of R in data wrangling and visualization. Every week a new data set is distributed where participants are welcome to perform modelling, wranging and visualization.",
-  tech = c("R", "flexdashboard", "tidyverse")
-)
-```
+[**Tidy Tuesday submission dashboard**](https://www.qpmnguyen.com/extras/flexdash.html)  
+[Source](https://github.com/qpmnguyen/qn_tidytuesday)  
+This is a dashboard for all my #TidyTuesday submissions. #TidyTuesday is a weekly online event hosted by the R4DS community to promote usage of R in data wrangling and visualization. Every week a new data set is distributed where participants are welcome to perform modelling, wranging and visualization.  
+Technologies: `R`,`flexdashboard`,`tidyverse`  
 
-```{r}
-create_card(
-  url = "https://www.qpmnguyen.com/posts/2021-01-10-election-prediction-using-elo/",
-  title = "Forecasting presidential elections using Elo Rankings",
-  description = "Using probability models based on Elo rankings (rankings used in zero-sum games such as chess) as a way to predict US presidential elections.",
-  tech = c("Julia", "R", "distill"),
-  source = "https://github.com/qpmnguyen/elo_presidente"
-)
-#https://mybinder.org/v2/gh/fonsp/pluto-on-binder/master?urlpath=pluto/open?url=https%253A%252F%252Fgithub.com%252Fqpmnguyen%252Felo_presidente%252Fblob%252Fmaster%252Fanalysis.jl%253Fraw%253Dtrue
-```
-
+[**Forecasting presidential elections using Elo Rankings**](https://www.qpmnguyen.com/posts/2021-01-10-election-prediction-using-elo/)  
+[Source](https://github.com/qpmnguyen/elo_presidente)   
+Using probability models based on Elo rankings (rankings used in zero-sum games such as chess) as a way to predict US presidential elections.  
+Technologies: `Julia`,`R`,`distill`  
 
 
 
