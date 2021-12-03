@@ -19,7 +19,7 @@ output:
 
 ## Bio  
 
-I am a Ph.D. candidate in the Quantitative Biomedical Sciences program at Dartmouth. I'm interested in developing statistical and bioinformatic tools to bridge population health research and genomic assays through novel feature selection and feature engineering. My work mostly focuses on the infant gut microbiome, early life exposures and childhood diseases. You can find me on [Github](https://github.com/qpmnguyen), [LinkedIn](https://www.linkedin.com/in/qpmnguyen/), [Google Scholar](https://scholar.google.com/citations?user=Y5jqD-IAAAAJ&hl=en) and [Twitter](https://twitter.com/quangpmnguyen).   
+I am a Ph.D. candidate in the Quantitative Biomedical Sciences program at Dartmouth. I'm interested in developing statistical and bioinformatic tools to bridge population health research and high-throughput sequencing assays through novel feature selection and engineering. My work mostly focuses on the infant gut microbiome, early life exposures and childhood diseases. You can find me on [Github](https://github.com/qpmnguyen), [LinkedIn](https://www.linkedin.com/in/qpmnguyen/), [Google Scholar](https://scholar.google.com/citations?user=Y5jqD-IAAAAJ&hl=en) and [Twitter](https://twitter.com/quangpmnguyen).   
 
 ## Education   
 Dartmouth College - Ph.D. in Quantitative Biomedical Sciences | 2017-2022    
@@ -33,7 +33,7 @@ Bates College - B.S. in Mathematics and Biochemistry | 2013-2017
 
 ## Skills  
 * Statistical analysis using R and Python 
-* Additional languages include Julia, Rust, C++.    
-* Writing bioinformatic workflows in Snakemake/Nextflow/targets and execute on Slurm/Torque HPC systems  
-* Developing R packages and shiny applications 
-* SQL (SQLite, MySQL)   
+* Familiar with Julia, Rust, C++.    
+* Writing bioinformatic workflows in `Snakemake`/`Nextflow`/`targets` and execute on Slurm/Torque HPC systems  
+* Developing R packages and shiny applications   
+* Familiar with SQL (SQLite, MySQL)   
