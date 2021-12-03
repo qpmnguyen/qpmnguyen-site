@@ -28,11 +28,12 @@ Bates College - B.S. in Mathematics and Biochemistry | 2013-2017
 
 ## Experiences  
 * Biostatistics Intern - Regeneron Pharmaceuticals | Jun - Aug, 2021    
-* Data Quality and Science Communication - The COVID Tracking Project at The Atlantic | March, 2020 - March, 2021    
-* Statistical Consultant - Dartmouth Hitchcock Analytic Institute | 2019 - Current   
+* Data Quality and Science Communication - The COVID Tracking Project at The Atlantic | March, 2020 - June, 2021    
+* Statistical Consultant - Dartmouth Hitchcock Analytic Institute | 2019 - 2021   
 
 ## Skills  
-* Statistical analysis using R (4 years), Python (2 years), and Julia (1 year).    
-* Running bioinformatic tools, specifically microbiome specific pipelines.    
-* Shiny, Snakemake, Git, HPC, Pluto.jl      
+* Statistical analysis using R and Python 
+* Additional languages include Julia, Rust, C++.    
+* Writing bioinformatic workflows in Snakemake/Nextflow/targets and execute on Slurm/Torque HPC systems  
+* Developing R packages and shiny applications 
 * SQL (SQLite, MySQL)   

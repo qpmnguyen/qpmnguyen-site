@@ -151,6 +151,7 @@ generate_models <- function(model, grid_size){
 mod <- generate_models(mod_list[[1]], grid_size = 10)
 
 ```
+
 ```{r}
 eval_mod <- function(model, split){
   train <- analysis(split)
