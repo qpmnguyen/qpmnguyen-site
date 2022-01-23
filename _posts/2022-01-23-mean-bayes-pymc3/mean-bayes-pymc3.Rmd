@@ -1,0 +1,39 @@
+---
+title: "MiniBlog: Bayesian approach to estimating means with PyMC3"
+description: |
+  A short description of the post.
+author:
+  - name: Quang Nguyen
+    url: {}
+date: 2022-01-23
+output:
+  distill::distill_article:
+    self_contained: false
+draft: true
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+<aside>
+Setting up the `python` environment  
+```{r}
+library(reticulate)
+use_condaenv(condaenv = "chocolate_bayes")
+py_config()
+if (!arviz %in% py_list_packages$packages){
+    py_install(c("pandas", "arviz", "matplotlib", "numpy", "pymc3", "theano"))
+}
+```
+</aside>
+
+```{python}
+import arviz
+
+
+```
+
+
+
