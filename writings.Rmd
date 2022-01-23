@@ -5,7 +5,7 @@ description: |
 output: distill::distill_article
 ---
 
-[**The COVID Tracking Project at The Atlantic**](https://covidtracking.com/search?q=Quang)   
+## [**The COVID Tracking Project at The Atlantic**](https://covidtracking.com/search?q=Quang)   
 
 Authored 7 articles with The COVID Tracking Project detailing different aspects of COVID data reporting at the state and federal level. List of articles include:   
 

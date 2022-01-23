@@ -8,9 +8,6 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
 
-    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab&display=swap" rel="stylesheet">
-    <style type="text/css">body {font-family: 'Roboto Slab', serif;}</style>
-
     <title>Quang Nguyen</title>
 
     
@@ -730,6 +727,8 @@
           @import url('https://fonts.googleapis.com/css2?family=Work+Sans&display=swap');
           @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&display=swap');
           @import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
+          @import url('https://fonts.googleapis.com/css2?family=Bitter:wght@500&display=swap');
+          @import url('https://fonts.googleapis.com/css2?family=Raleway&display=swap');
 
           html {
             /*-- Main font sizes --*/
@@ -747,7 +746,7 @@
             /*-- Specify custom fonts ~~~ must be imported above   --*/
             --heading-font:    'Work Sans', sans-serif;
             --mono-font:       'Fira Code', monospace;
-            --body-font:       'Lato', sans-serif;
+            --body-font:       'Bitter', serif;
             --navbar-font:     'Work Sans', sans-serif;  /* websites + blogs only */
           }
 
@@ -799,7 +798,6 @@
 
           .distill-site-header { 
             letter-spacing: 2px;
-            text-transform: uppercase;
           }
 
           h1, h2, h3, h4, h5, h6 {
@@ -827,7 +825,7 @@
 
           .card {
               color: #474747;
-              background-color: #FFFFFF;
+              background-color: #F2F7FF;
               box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
               transition: 0.3s;
               border-radius: 10px; 
@@ -865,6 +863,10 @@
             color: crimson;
             padding: 2px;
             font-size: 105%;
+          }
+
+          body {
+            background-color: #F2F7FF;
           }</style>
           <style type="text/css">
           /* base style */
@@ -1020,7 +1022,7 @@
           .distill-site-footer a:hover {
             color: var(--hover-color, white);
           }</style>
-          <script src="/Library/Frameworks/R.framework/Versions/4.1/Resources/library/rmarkdown/rmd/h/pandoc/header-attrs.js"></script>
+          <script src="E:\R\R-4.1.2\library\rmarkdown\rmd\h\pandoc\header-attrs.js"></script>
     
     
   </head>
@@ -1034,10 +1036,20 @@
           <input id="distill-search" class="nav-search hidden" type="text" placeholder="Search..."/>
           </div>
           <div class="nav-right">
-          <a href="index.html">Home</a>
+          <a href="about.html">About</a>
           <a href="posts.html">Posts</a>
-          <a href="projects.html">Projects</a>
+          <div class="nav-dropdown">
+          <button class="nav-dropbtn">
+          Projects
+           
+          <span class="down-arrow">&#x25BE;</span>
+          </button>
+          <div class="nav-dropdown-content">
           <a href="writings.html">Writings</a>
+          <a href="software.html">Software</a>
+          <a href="analyses.html">Analyses &amp; Visualizations</a>
+          </div>
+          </div>
           <a href="research.html">Research</a>
           <a href="javascript:void(0);" class="nav-toggle">&#9776;</a>
           </div>
@@ -1047,177 +1059,97 @@
           <!--radix_placeholder_site_before_body-->
           <!--/radix_placeholder_site_before_body-->
     
-    <div class="container-fluid d-none d-lg-block d-xl-block">
-      <div class="d-flex row flex-row vh-100">
-        <div class="d-flex flex-column col-5 align-items-center text-center align-self-center">
-          <div class="mx-auto text-center">
-            <div class="p-3">
-              <img src=Quang.jpg style="height:15rem" class="rounded">
+    <div class="container min-vh-100">
+      <div class="row min-vh-100 justify-content-center align-items-center">
+        <div class="col-12 text-center">
+          <img src="Quang.jpg" style="height:10rem" class="rounded-circle">
+          <div class="mt-3">
+            <h1>Quang Nguyen</h1>
+          </div>
+          <div class="row justify-content-center align-items-center">
+            <div class="col-6 mt-3 text-center d-none d-sm-block">
+              <p>Aspiring biomedical data scientist. Doing a mixture of epidemiology, bioinformatics and statistics with infant gut microbiomes at the moment.</p>
             </div>
-            <div class="p-2">
-              <h1>Quang Nguyen</h1>
-            </div>
-            <hr style="width:60%;"/>
-            <div class="p-2">
-              <div id="icon-list">
-                <ul class="list-inline">
-                                    <li class="list-inline-item">
-                    <a href=https://twitter.com/quangpmnguyen>
-                      <button type="button" class="btn btn-outline-dark mb-2">
-                        Twitter
-                      </button>
-                    </a>
-                  </li>
-                                    <li class="list-inline-item">
-                    <a href=https://github.com/qpmnguyen>
-                      <button type="button" class="btn btn-outline-dark mb-2">
-                        GitHub
-                      </button>
-                    </a>
-                  </li>
-                                    <li class="list-inline-item">
-                    <a href=https://www.linkedin.com/in/qpmnguyen>
-                      <button type="button" class="btn btn-outline-dark mb-2">
-                        LinkedIn
-                      </button>
-                    </a>
-                  </li>
-                                    <li class="list-inline-item">
-                    <a href=mailto:quangpmnguyen@gmail.com>
-                      <button type="button" class="btn btn-outline-dark mb-2">
-                        Email
-                      </button>
-                    </a>
-                  </li>
-                                    <li class="list-inline-item">
-                    <a href=https://www.qpmnguyen.com/extras/qn_cv.pdf>
-                      <button type="button" class="btn btn-outline-dark mb-2">
-                        CV
-                      </button>
-                    </a>
-                  </li>
-                                  </ul>
-              </div>
+            <div class="col-11 mt-3 text-center d-block d-sm-none">
+              <p>Aspiring biomedical data scientist. Doing a mixture of epidemiology, bioinformatics and statistics with infant gut microbiomes at the moment.</p>
             </div>
           </div>
-        </div>
-        <div class="d-flex flex-column vh-100 border-left"></div>
-        <div class="d-flex flex-column col px-5 align-items-center align-self-center mh-100" style="overflow-y: scroll;">
-          <div class="my-5" id="content">
-            <div id="bio" class="section level2">
-            <h2>Bio</h2>
-            <p>I am a Ph.D. candidate in the Quantitative Biomedical Sciences program at Dartmouth. I’m interested in developing statistical and bioinformatic tools to bridge population health research and high-throughput sequencing assays through novel feature selection and engineering. My work mostly focuses on the infant gut microbiome, early life exposures and childhood diseases. You can find me on <a href="https://github.com/qpmnguyen">Github</a>, <a href="https://www.linkedin.com/in/qpmnguyen/">LinkedIn</a>, <a href="https://scholar.google.com/citations?user=Y5jqD-IAAAAJ&amp;hl=en">Google Scholar</a> and <a href="https://twitter.com/quangpmnguyen">Twitter</a>.</p>
-            </div>
-            <div id="education" class="section level2">
-            <h2>Education</h2>
-            <p>Dartmouth College - Ph.D. in Quantitative Biomedical Sciences | 2017-2022<br />
-            Bates College - B.S. in Mathematics and Biochemistry | 2013-2017</p>
-            </div>
-            <div id="experiences" class="section level2">
-            <h2>Experiences</h2>
-            <ul>
-            <li>Biostatistics Intern - Regeneron Pharmaceuticals | Jun - Aug, 2021<br />
-            </li>
-            <li>Data Quality and Science Communication - The COVID Tracking Project at The Atlantic | March, 2020 - June, 2021<br />
-            </li>
-            <li>Statistical Consultant - Dartmouth Hitchcock Analytic Institute | 2019 - 2021</li>
-            </ul>
-            </div>
-            <div id="skills" class="section level2">
-            <h2>Skills</h2>
-            <ul>
-            <li>Statistical analysis using R and Python</li>
-            <li>Familiar with Julia, Rust, C++.<br />
-            </li>
-            <li>Writing bioinformatic workflows in <code>Snakemake</code>/<code>Nextflow</code>/<code>targets</code> and execute on Slurm/Torque HPC systems<br />
-            </li>
-            <li>Developing R packages and shiny applications<br />
-            </li>
-            <li>Familiar with SQL (SQLite, MySQL)</li>
-            </ul>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
 
-    <div class="container-flex min-vh-100 d-block d-lg-none d-xl-none">
-      <div class="d-flex flex-row justify-content-center">
-        <div class="d-flex flex-col">
-          <div class="mx-auto">
-            <div class="p-3 mt-3 text-center">
-              <img src=Quang.jpg style="height:15rem" class="rounded">
-            </div>
-            <div class="p-2 text-center">
-              <h1>Quang Nguyen</h1>
-            </div>
-            <hr style="width:60%;"/>
+          <hr style="width:60%;"/>
 
-            <div class="row justify-content-center align-items-center">
-              <div class="col-8 p-1 text-center">
-                <div class="list-group">
-                                    <a href=https://twitter.com/quangpmnguyen>
-                    <button type="button" class="list-group-item list-group-item-action my-1 rounded">
+          <div class="row justify-content-center align-items-center">
+            <div class="col-8 text-center d-none d-sm-block">
+              <ul class="list-inline">
+                                <li class="list-inline-item">
+                  <a href=https://twitter.com/quangpmnguyen>
+                    <button type="button" class="btn btn-outline-dark mb-2">
                       Twitter
                     </button>
                   </a>
-                                    <a href=https://github.com/qpmnguyen>
-                    <button type="button" class="list-group-item list-group-item-action my-1 rounded">
+                </li>
+                                <li class="list-inline-item">
+                  <a href=https://github.com/qpmnguyen>
+                    <button type="button" class="btn btn-outline-dark mb-2">
                       GitHub
                     </button>
                   </a>
-                                    <a href=https://www.linkedin.com/in/qpmnguyen>
-                    <button type="button" class="list-group-item list-group-item-action my-1 rounded">
+                </li>
+                                <li class="list-inline-item">
+                  <a href=https://www.linkedin.com/in/qpmnguyen>
+                    <button type="button" class="btn btn-outline-dark mb-2">
                       LinkedIn
                     </button>
                   </a>
-                                    <a href=mailto:quangpmnguyen@gmail.com>
-                    <button type="button" class="list-group-item list-group-item-action my-1 rounded">
+                </li>
+                                <li class="list-inline-item">
+                  <a href=mailto:quangpmnguyen@gmail.com>
+                    <button type="button" class="btn btn-outline-dark mb-2">
                       Email
                     </button>
                   </a>
-                                    <a href=https://www.qpmnguyen.com/extras/qn_cv.pdf>
-                    <button type="button" class="list-group-item list-group-item-action my-1 rounded">
+                </li>
+                                <li class="list-inline-item">
+                  <a href=https://www.qpmnguyen.com/extras/qn_cv.pdf>
+                    <button type="button" class="btn btn-outline-dark mb-2">
                       CV
                     </button>
                   </a>
-                                  </div>
-              </div>
+                </li>
+                              </ul>
             </div>
-            <div class="p pt-4 px-5">
-              <div id="bio" class="section level2">
-              <h2>Bio</h2>
-              <p>I am a Ph.D. candidate in the Quantitative Biomedical Sciences program at Dartmouth. I’m interested in developing statistical and bioinformatic tools to bridge population health research and high-throughput sequencing assays through novel feature selection and engineering. My work mostly focuses on the infant gut microbiome, early life exposures and childhood diseases. You can find me on <a href="https://github.com/qpmnguyen">Github</a>, <a href="https://www.linkedin.com/in/qpmnguyen/">LinkedIn</a>, <a href="https://scholar.google.com/citations?user=Y5jqD-IAAAAJ&amp;hl=en">Google Scholar</a> and <a href="https://twitter.com/quangpmnguyen">Twitter</a>.</p>
-              </div>
-              <div id="education" class="section level2">
-              <h2>Education</h2>
-              <p>Dartmouth College - Ph.D. in Quantitative Biomedical Sciences | 2017-2022<br />
-              Bates College - B.S. in Mathematics and Biochemistry | 2013-2017</p>
-              </div>
-              <div id="experiences" class="section level2">
-              <h2>Experiences</h2>
-              <ul>
-              <li>Biostatistics Intern - Regeneron Pharmaceuticals | Jun - Aug, 2021<br />
-              </li>
-              <li>Data Quality and Science Communication - The COVID Tracking Project at The Atlantic | March, 2020 - June, 2021<br />
-              </li>
-              <li>Statistical Consultant - Dartmouth Hitchcock Analytic Institute | 2019 - 2021</li>
-              </ul>
-              </div>
-              <div id="skills" class="section level2">
-              <h2>Skills</h2>
-              <ul>
-              <li>Statistical analysis using R and Python</li>
-              <li>Familiar with Julia, Rust, C++.<br />
-              </li>
-              <li>Writing bioinformatic workflows in <code>Snakemake</code>/<code>Nextflow</code>/<code>targets</code> and execute on Slurm/Torque HPC systems<br />
-              </li>
-              <li>Developing R packages and shiny applications<br />
-              </li>
-              <li>Familiar with SQL (SQLite, MySQL)</li>
-              </ul>
-              </div>
+          </div>
+
+          <div class="row justify-content-center align-items-center">
+            <div class="col-8 m-1 text-center d-block d-sm-none">
+              <div class="list-group">
+                                <a href=https://twitter.com/quangpmnguyen>
+                  <button type="button" class="list-group-item list-group-item-action my-1 rounded">
+                    Twitter
+                  </button>
+                </a>
+                                <a href=https://github.com/qpmnguyen>
+                  <button type="button" class="list-group-item list-group-item-action my-1 rounded">
+                    GitHub
+                  </button>
+                </a>
+                                <a href=https://www.linkedin.com/in/qpmnguyen>
+                  <button type="button" class="list-group-item list-group-item-action my-1 rounded">
+                    LinkedIn
+                  </button>
+                </a>
+                                <a href=mailto:quangpmnguyen@gmail.com>
+                  <button type="button" class="list-group-item list-group-item-action my-1 rounded">
+                    Email
+                  </button>
+                </a>
+                                <a href=https://www.qpmnguyen.com/extras/qn_cv.pdf>
+                  <button type="button" class="list-group-item list-group-item-action my-1 rounded">
+                    CV
+                  </button>
+                </a>
+                              </div>
             </div>
+          </div>
         </div>
       </div>
     </div>
@@ -1228,10 +1160,10 @@
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
 
-      <!--radix_placeholder_site_after_body-->
-      <!--/radix_placeholder_site_after_body-->
-      <!--radix_placeholder_navigation_after_body-->
-      <!--/radix_placeholder_navigation_after_body-->
-  
+          <!--radix_placeholder_site_after_body-->
+          <!--/radix_placeholder_site_after_body-->
+          <!--radix_placeholder_navigation_after_body-->
+          <!--/radix_placeholder_navigation_after_body-->
+    
   </body>
 </html>

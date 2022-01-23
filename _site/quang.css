@@ -13,6 +13,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Work+Sans&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bitter:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Raleway&display=swap');
 
 html {
   /*-- Main font sizes --*/
@@ -30,7 +32,7 @@ html {
   /*-- Specify custom fonts ~~~ must be imported above   --*/
   --heading-font:    'Work Sans', sans-serif;
   --mono-font:       'Fira Code', monospace;
-  --body-font:       'Lato', sans-serif;
+  --body-font:       'Bitter', serif;
   --navbar-font:     'Work Sans', sans-serif;  /* websites + blogs only */
 }
 
@@ -82,7 +84,6 @@ ul > li::marker {
 
 .distill-site-header { 
   letter-spacing: 2px;
-  text-transform: uppercase;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -110,7 +111,7 @@ d-appendix {
 
 .card {
     color: #474747;
-    background-color: #FFFFFF;
+    background-color: #F2F7FF;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
     transition: 0.3s;
     border-radius: 10px; 
@@ -148,4 +149,8 @@ code {
   color: crimson;
   padding: 2px;
   font-size: 105%;
+}
+
+body {
+  background-color: #F2F7FF;
 }

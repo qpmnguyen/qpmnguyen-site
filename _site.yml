@@ -14,15 +14,21 @@ collections:
     share: [twitter, linkedin]
 navbar:
   right:
-    - text: "Home"
-      href: index.html
+    - text: "About"
+      href: about.html
     - text: "Posts"
       href: posts.html
     - text: "Projects"  
-      href: projects.html  
-    - text: "Writings"
-      href: writings.html  
+      menu: 
+      - text: "Writings"
+        href: writings.html
+      - text: "Software"
+        href: software.html
+      - text: "Analyses & Visualizations"
+        href: analyses.html
     - text: "Research" 
       href: research.html
-output: distill::distill_article  
-theme: quang.css
+output: 
+  distill::distill_article:
+    theme: quang.css
+    toc: true

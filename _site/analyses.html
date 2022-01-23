@@ -87,29 +87,29 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 
 
   <!--radix_placeholder_meta_tags-->
-  <title>Quang P. Nguyen: Research</title>
+  <title>Quang P. Nguyen: Analyses and Visualiations</title>
 
-  <meta property="description" itemprop="description" content="Research projects and interests."/>
+  <meta property="description" itemprop="description" content="Complete analyses and visualization projects."/>
 
 
 
   <!--  https://developers.facebook.com/docs/sharing/webmasters#markup -->
-  <meta property="og:title" content="Quang P. Nguyen: Research"/>
+  <meta property="og:title" content="Quang P. Nguyen: Analyses and Visualiations"/>
   <meta property="og:type" content="article"/>
-  <meta property="og:description" content="Research projects and interests."/>
+  <meta property="og:description" content="Complete analyses and visualization projects."/>
   <meta property="og:locale" content="en_US"/>
   <meta property="og:site_name" content="Quang P. Nguyen"/>
 
   <!--  https://dev.twitter.com/cards/types/summary -->
   <meta property="twitter:card" content="summary"/>
-  <meta property="twitter:title" content="Quang P. Nguyen: Research"/>
-  <meta property="twitter:description" content="Research projects and interests."/>
+  <meta property="twitter:title" content="Quang P. Nguyen: Analyses and Visualiations"/>
+  <meta property="twitter:description" content="Complete analyses and visualization projects."/>
 
   <!--/radix_placeholder_meta_tags-->
   <!--radix_placeholder_rmarkdown_metadata-->
 
   <script type="text/json" id="radix-rmarkdown-metadata">
-  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","description","output"]}},"value":[{"type":"character","attributes":{},"value":["Research"]},{"type":"character","attributes":{},"value":["Research projects and interests.\n"]},{"type":"character","attributes":{},"value":["distill::distill_article"]}]}
+  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","description","output"]}},"value":[{"type":"character","attributes":{},"value":["Analyses and Visualiations"]},{"type":"character","attributes":{},"value":["Complete analyses and visualization projects.\n"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["css"]}},"value":[{"type":"character","attributes":{},"value":["quang.css"]}]}]}]}
   </script>
   <!--/radix_placeholder_rmarkdown_metadata-->
   <!--radix_placeholder_navigation_in_header-->
@@ -2444,6 +2444,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </script>
   <!--/radix_placeholder_site_in_header-->
 
+  <link rel="stylesheet" href="quang.css" type="text/css"/>
 
 </head>
 
@@ -2452,7 +2453,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <!--radix_placeholder_front_matter-->
 
 <script id="distill-front-matter" type="text/json">
-{"title":"Research","description":"Research projects and interests.","authors":[]}
+{"title":"Analyses and Visualiations","description":"Complete analyses and visualization projects.","authors":[]}
 </script>
 
 <!--/radix_placeholder_front_matter-->
@@ -2488,10 +2489,10 @@ Projects
 <!--/radix_placeholder_site_before_body-->
 
 <div class="d-title">
-<h1>Research</h1>
+<h1>Analyses and Visualiations</h1>
 <!--radix_placeholder_categories-->
 <!--/radix_placeholder_categories-->
-<p><p>Research projects and interests.</p></p>
+<p><p>Complete analyses and visualization projects.</p></p>
 </div>
 
 
@@ -2500,29 +2501,14 @@ Projects
 <nav class="l-text toc figcaption" id="TOC">
 <h3>Contents</h3>
 <ul>
-<li><a href="#first-author-manuscripts">First-author manuscripts</a></li>
-<li><a href="#co-author-manuscripts">Co-author manuscripts</a></li>
+<li><a href="#tidy-tuesday-submission-dashboard"><span><strong>Tidy Tuesday submission dashboard</strong></span></a></li>
 </ul>
 </nav>
 </div>
-<p>Broadly speaking, I’m interested in developing variable selection and feature engineering methods that leverages prior biological knowledge for machine learning and statistical analysis in the context of high dimensional genomic data sets. I hope to deploy these tools to help assist in generating meaningful mechanistically driven hypotheses from population-level surveys.</p>
-<h2 id="first-author-manuscripts">First-author manuscripts</h2>
-<p><em>Associations between the gut microbiome and the metabolome in early life</em><br />
-<strong>Quang P Nguyen</strong>, Margaret R. Karagas, Juliette C. Madan, Erika Dade, Tom J. Palys, Hilary G. Morrison, Wimal W. Pathmasiri, Susan McRitche, Susan J. Sumner, H. Robert Frost, Anne G. Hoen<br />
-[<a href="https://github.com/qpmnguyen/infant_metabolome_microbiome">Source Code</a>] [<a href="https://bmcmicrobiol.biomedcentral.com/articles/10.1186/s12866-021-02282-3">Manuscript</a>]<br />
-<strong>Abstract:</strong> The infant intestinal microbiome plays an important role in metabolism and immune development with impacts on lifelong health. The linkage between the taxonomic composition of the microbiome and its metabolic phenotype is undefined and complicated by redundancies in the taxon-function relationships within microbial communities. To inform a more mechanistic understanding of the relationship between the microbiome and health, we performed an integrative statistical and machine learning-based analysis of microbe taxonomic structure and metabolic function in order to characterize the taxa-function relationship in early life.</p>
-<p><em>cILR: Competitive isometric log-ratio for taxonomic enrichment analysis</em><br />
-<strong>Quang P Nguyen</strong>, Anne G. Hoen, H. Robert Frost<br />
-<em>Submitted</em><br />
-[<a href="https://github.com/qpmnguyen/cILR_analysis">Analysis Code</a>] [<a href="https://github.com/qpmnguyen/teaR">Package</a>] [<a href="https://www.biorxiv.org/content/10.1101/2021.09.07.459294v1">Pre-print</a>]<br />
-<strong>Abstract:</strong> High-dimensionality and sparsity are challenging problems in statistical analysis of microbiome relative abundance data. One approach is to aggregate taxa to sets, most commonly to Linnean taxonomic categories identified through classification of representative sequences. However, most researchers perform aggregation through the pairwise summation of counts, preventing comparison across sets of different sizes. We developed a taxa set enrichment method based on the isometric log-ratio transformation (cILR) for microbiome relative abundance data. Our method generates sample-specific taxa set enrichment scores with a well-defined null hypothesis corresponding to the Q2 competitive null hypothesis in the gene set testing literature. Significance testing was performed by estimating the empirical null distribution accounting for variance inflation due to inter-taxa correlation.</p>
-<h2 id="co-author-manuscripts">Co-author manuscripts</h2>
-<p>Rebecca M Lebeaux, Juliette C Madan, <strong>Quang P Nguyen</strong>, Modupe O Coker, Erika F Dade, Yuka Moroishi, Thomas J Palys, Benjamin D Ross, Melinda M Pettigrew, Hilary G Morrison, Margaret R Karagas, Anne G Hoen. Impact of antibiotics to off-target infant gut microbiota and resistance genes in cohort studies. medRxiv, 2021. doi: <a href="https://doi.org/10.1101/2021.11.02.21265394" class="uri">https://doi.org/10.1101/2021.11.02.21265394</a></p>
-<p>Jie Zhou, Anne G Hoen, Susan Mcritchie, Wimal Pathmasiri, Weston D Viles, <strong>Quang P Nguyen</strong>, Juliette C Madan, Erika Dade, Margaret R Karagas, Jiang Gui. Information enhanced model selection for Gaussian graphical model with application to metabolomic data. Biostatistics, 2021;, kxab006, <a href="https://doi.org/10.1093/biostatistics/kxab006" class="uri">https://doi.org/10.1093/biostatistics/kxab006</a></p>
-<p>Robert A. Shumsky, Laurens Debo, Rebecca M. Lebeaux, <strong>Quang P. Nguyen</strong>, Anne G. Hoen. Retail store customer flow and COVID-19 transmission. Proceedings of the National Academy of Sciences Mar 2021, 118 (11) e2019225118; DOI: 10.1073/pnas.2019225118</p>
-<p>Winterbottom, E.F., Moroishi, Y., Halchenko, Y., (incl. <strong>Nguyen Q.P.</strong>). Prenatal arsenic exposure alters the placental expression of multiple epigenetic regulators in a sex-dependent manner. Environ Health 18, 18 (2019). <a href="https://doi.org/10.1186/s12940-019-0455-9" class="uri">https://doi.org/10.1186/s12940-019-0455-9</a></p>
-<p>Nguyen HL, Ha DA, Goldberg RJ, Kiefe CI, Chiriboga G, Ly HN, et al. (incl. <strong>Nguyen, Q.P.</strong>) (2018) Culturally adaptive storytelling intervention versus didactic intervention to improve hypertension control in Vietnam- 12 month follow up results: A cluster randomized controlled feasibility trial. PLoS ONE 13(12): e0209912. <a href="https://doi.org/10.1371/journal.pone.0209912" class="uri">https://doi.org/10.1371/journal.pone.0209912</a></p>
-<p>Nguyen, H.L., Allison, J.J., Ha, D.A. et al (incl. <strong>Nguyen, Q.P.</strong>). Culturally adaptive storytelling intervention versus didactic intervention to improve hypertension control in Vietnam: a cluster-randomized controlled feasibility trial. Pilot Feasibility Stud 3, 22 (2017). <a href="https://doi.org/10.1186/s40814-017-0136-9" class="uri">https://doi.org/10.1186/s40814-017-0136-9</a></p>
+<h3 id="tidy-tuesday-submission-dashboard"><a href="https://www.qpmnguyen.com/extras/flexdash.html"><strong>Tidy Tuesday submission dashboard</strong></a></h3>
+<p><a href="https://github.com/qpmnguyen/qn_tidytuesday"><strong>Source</strong></a><br />
+This is a dashboard for all my #TidyTuesday submissions. #TidyTuesday is a weekly online event hosted by the R4DS community to promote usage of R in data wrangling and visualization. Every week a new data set is distributed where participants are welcome to perform modelling, wranging and visualization.<br />
+Technologies: <code>R</code>,<code>flexdashboard</code>,<code>tidyverse</code></p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->

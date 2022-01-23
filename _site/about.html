@@ -87,29 +87,29 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 
 
   <!--radix_placeholder_meta_tags-->
-  <title>Quang P. Nguyen: Projects</title>
+  <title>Quang P. Nguyen: About</title>
 
-  <meta property="description" itemprop="description" content="My projects."/>
+  <meta property="description" itemprop="description" content="Some things about myself"/>
 
 
 
   <!--  https://developers.facebook.com/docs/sharing/webmasters#markup -->
-  <meta property="og:title" content="Quang P. Nguyen: Projects"/>
+  <meta property="og:title" content="Quang P. Nguyen: About"/>
   <meta property="og:type" content="article"/>
-  <meta property="og:description" content="My projects."/>
+  <meta property="og:description" content="Some things about myself"/>
   <meta property="og:locale" content="en_US"/>
   <meta property="og:site_name" content="Quang P. Nguyen"/>
 
   <!--  https://dev.twitter.com/cards/types/summary -->
   <meta property="twitter:card" content="summary"/>
-  <meta property="twitter:title" content="Quang P. Nguyen: Projects"/>
-  <meta property="twitter:description" content="My projects."/>
+  <meta property="twitter:title" content="Quang P. Nguyen: About"/>
+  <meta property="twitter:description" content="Some things about myself"/>
 
   <!--/radix_placeholder_meta_tags-->
   <!--radix_placeholder_rmarkdown_metadata-->
 
   <script type="text/json" id="radix-rmarkdown-metadata">
-  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","description","output"]}},"value":[{"type":"character","attributes":{},"value":["Projects"]},{"type":"character","attributes":{},"value":["My projects.\n"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["css"]}},"value":[{"type":"character","attributes":{},"value":["quang.css"]}]}]}]}
+  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","description","output"]}},"value":[{"type":"character","attributes":{},"value":["About"]},{"type":"character","attributes":{},"value":["Some things about myself  \n"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["css"]}},"value":[{"type":"character","attributes":{},"value":["quang.css"]}]}]}]}
   </script>
   <!--/radix_placeholder_rmarkdown_metadata-->
   <!--radix_placeholder_navigation_in_header-->
@@ -2129,6 +2129,8 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   @import url('https://fonts.googleapis.com/css2?family=Work+Sans&display=swap');
   @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&display=swap');
   @import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Bitter:wght@500&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Raleway&display=swap');
 
   html {
     /*-- Main font sizes --*/
@@ -2146,7 +2148,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
     /*-- Specify custom fonts ~~~ must be imported above   --*/
     --heading-font:    'Work Sans', sans-serif;
     --mono-font:       'Fira Code', monospace;
-    --body-font:       'Lato', sans-serif;
+    --body-font:       'Bitter', serif;
     --navbar-font:     'Work Sans', sans-serif;  /* websites + blogs only */
   }
 
@@ -2198,7 +2200,6 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 
   .distill-site-header { 
     letter-spacing: 2px;
-    text-transform: uppercase;
   }
 
   h1, h2, h3, h4, h5, h6 {
@@ -2226,7 +2227,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 
   .card {
       color: #474747;
-      background-color: #FFFFFF;
+      background-color: #F2F7FF;
       box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
       transition: 0.3s;
       border-radius: 10px; 
@@ -2264,6 +2265,10 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
     color: crimson;
     padding: 2px;
     font-size: 105%;
+  }
+
+  body {
+    background-color: #F2F7FF;
   }</style>
   <style type="text/css">
   /* base style */
@@ -2448,7 +2453,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <!--radix_placeholder_front_matter-->
 
 <script id="distill-front-matter" type="text/json">
-{"title":"Projects","description":"My projects.","authors":[]}
+{"title":"About","description":"Some things about myself","authors":[]}
 </script>
 
 <!--/radix_placeholder_front_matter-->
@@ -2460,10 +2465,20 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <input id="distill-search" class="nav-search hidden" type="text" placeholder="Search..."/>
 </div>
 <div class="nav-right">
-<a href="index.html">Home</a>
+<a href="about.html">About</a>
 <a href="posts.html">Posts</a>
-<a href="projects.html">Projects</a>
+<div class="nav-dropdown">
+<button class="nav-dropbtn">
+Projects
+ 
+<span class="down-arrow">&#x25BE;</span>
+</button>
+<div class="nav-dropdown-content">
 <a href="writings.html">Writings</a>
+<a href="software.html">Software</a>
+<a href="analyses.html">Analyses &amp; Visualizations</a>
+</div>
+</div>
 <a href="research.html">Research</a>
 <a href="javascript:void(0);" class="nav-toggle">&#9776;</a>
 </div>
@@ -2474,89 +2489,52 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <!--/radix_placeholder_site_before_body-->
 
 <div class="d-title">
-<h1>Projects</h1>
+<h1>About</h1>
 <!--radix_placeholder_categories-->
 <!--/radix_placeholder_categories-->
-<p><p>My projects.</p></p>
+<p><p>Some things about myself</p></p>
 </div>
 
 
 <div class="d-article">
-<h2 id="software">Software</h2>
-<div class="layout-chunk" data-layout="l-body">
-<div class="card">
-<img class="card-img-top" src="images/hex-CBEA.png"/>
-<div class="card-body">
-<h4>
-<a href="https://www.example.com">CBEA: Competitive balances for taxonomic enrichment analysis</a>
-</h4>
-<h5>
-<a href="https://github.com/qpmnguyen/CBEA">
-<strong>Source Code</strong>
-</a>
-</h5>
-<p class="card-text">
-R package for performing enrichment analysis using the CBEA approach. Contains additional support function for generalized set enrichment analysis for microbiome data
-<br/>
-<strong>Built Using:</strong>
-<code>R</code>
-</p>
+<div class="d-contents d-contents-float">
+<nav class="l-text toc figcaption" id="TOC">
+<h3>Contents</h3>
+<ul>
+<li><a href="#education">Education</a></li>
+<li><a href="#recent-roles">Recent Roles</a></li>
+<li><a href="#skills-and-interests">Skills and Interests</a></li>
+</ul>
+</nav>
 </div>
-</div>
-</div>
-<div class="layout-chunk" data-layout="l-body">
-<div class="card">
-<img class="card-img-top" src="images/wip.png"/>
-<div class="card-body">
-<h4>
-<a href="https://difuse-dartmouth.shinyapps.io/DIFUSEEddyCovariance/">Eddy Covariance Exploration Shiny App</a>
-</h4>
-<h5>
-<a href="https://github.com/difuse-dartmouth/20x_BIO16">
-<strong>Source Code</strong>
-</a>
-</h5>
-<p class="card-text">
-BIOL 16 is a course that examines fundamental concepts in the rapidly developing areas of ecology. As an part of the DIFUSE program funded by NSF at Dartmouth College, we built an interactive data visualization and analysis tool based on R Shiny for students to explore the eddy covariance technique. Students are able to view data in raw format, interact with different visualizations, as well as being able to use such data to learn about how carbon exchange differs between seasons and time of day.
-<br/>
-<strong>Built Using:</strong>
-<code>R</code>
-<code>Shiny</code>
-<code>plotly</code>
-</p>
-</div>
-</div>
-</div>
-<div class="layout-chunk" data-layout="l-body">
-<div class="card">
-<img class="card-img-top" src="images/wip.png"/>
-<div class="card-body">
-<h4>
-<a href="https://www.example.com">microbesim: An R package for quick simulation of microbiome count data</a>
-</h4>
-<h5>
-<a href="https://github.com/qpmnguyen/microbesim">
-<strong>Source Code</strong>
-</a>
-</h5>
-<p class="card-text">
-In order to develop and apply data analysis techniques to microbiome relative abundance data, researchers often have to perform numerical simulations that approximate real data. This R package was developed in order to collect together all the common ways to simulate microbiome relative abundance data and provide a uniform interface for quick-and-dirty simulations.
-<br/>
-<strong>Built Using:</strong>
-<code>R</code>
-</p>
-</div>
-</div>
-</div>
-<h2 id="analyses-and-visualizations">Analyses and visualizations</h2>
-<p><a href="https://www.qpmnguyen.com/extras/flexdash.html"><strong>Tidy Tuesday submission dashboard</strong></a><br />
-<a href="https://github.com/qpmnguyen/qn_tidytuesday">Source</a><br />
-This is a dashboard for all my #TidyTuesday submissions. #TidyTuesday is a weekly online event hosted by the R4DS community to promote usage of R in data wrangling and visualization. Every week a new data set is distributed where participants are welcome to perform modelling, wranging and visualization.<br />
-Technologies: <code>R</code>,<code>flexdashboard</code>,<code>tidyverse</code></p>
-<p><a href="https://www.qpmnguyen.com/posts/2021-01-10-election-prediction-using-elo/"><strong>Forecasting presidential elections using Elo Rankings</strong></a><br />
-<a href="https://github.com/qpmnguyen/elo_presidente">Source</a><br />
-Using probability models based on Elo rankings (rankings used in zero-sum games such as chess) as a way to predict US presidential elections.<br />
-Technologies: <code>Julia</code>,<code>R</code>,<code>distill</code></p>
+<p>Greetings!</p>
+<p>My name is Quang, and I am an aspiring biomedical data scientist from Vietnam currently living in the United States. I am currently a Ph.D. candidate in Quantitative Biomedical Sciences from Dartmouth College. I have broad interests in data science within the biopharmaceutical research sphere but I am most invested in using genomic technologies for public health purposes.</p>
+<h3 id="education">Education</h3>
+<p><strong>Geisel School of Medicine at Dartmouth College</strong> | Lebanon, NH<br />
+Ph.D. Candidate in Quantitative Biomedical Sciences | September, 2017 - Expected June, 2022</p>
+<p><strong>Bates College</strong> | Lewiston, ME<br />
+B.S. in Biochemistry and Mathematics | September, 2013 - June, 2017</p>
+<h3 id="recent-roles">Recent Roles</h3>
+<p><strong>Regeneron Pharmaceuticals</strong> | Biostatistics Intern in early clinical development<br />
+<strong>The COVID Tracking Project at The Atlantic</strong> | Data Quality and Science Communication</p>
+<h3 id="skills-and-interests">Skills and Interests</h3>
+<ul>
+<li><strong>R</strong> for data related work: I am an <code>R</code> programmer for the past 5 years and use it in most of my projects. I mostly use <code>R</code> to perform statistical analysis (e.g. <code>glm</code>, <code>cmdstanr</code>, <code>lme4</code>) in the context of genomic (mostly microbiome) data sets (e.g. <code>phyloseq</code>, <code>dada2</code>, <code>DESeq2</code>). I am proficient in utilizing the <code>tidyverse</code> and <code>tidymodels</code> ecosystem, have experience developing R packages and Shiny dashboards, and can develop workflows using <code>targets</code>.<br />
+</li>
+<li><strong>Python</strong> for backend analysis and workflow generation: I use <code>python</code> mostly for interacting with biological databases (NCBI, Pathway Tools via <code>biopython</code>), and writing reproducible workflows (using <code>snakemake</code>). I also use <code>python</code> for machine learning coursework and personal projects (<code>pytorch</code>, <code>tensorflow</code>, and <code>scikit-learn</code>).<br />
+</li>
+<li><strong>Julia and C++</strong> for performance code: I am familiar with using <code>Julia</code> and <code>C++</code> for writing analyses or algorithms that require performance. This is done either for personal projects or integrated with <code>R</code> (via <code>Rcpp</code>).<br />
+</li>
+<li><strong>Shell/Bash scripting</strong> for running command-line tools and utilities.</li>
+<li><strong>Git/GitHub</strong> for code versioning and continuous integration.<br />
+</li>
+<li><strong>SQL (SQLite and MySQL)</strong> for creating and accessing data that cannot fit in memory.<br />
+</li>
+<li><strong>Slurm/Torque High Performance Computing</strong> for analyses that require extra memory and computing time.<br />
+</li>
+<li><strong>Additional technologies I’m familiar with</strong> include: <code>Rust</code>, <code>nextflow</code><br />
+</li>
+</ul>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->

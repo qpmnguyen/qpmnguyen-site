@@ -2127,6 +2127,8 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   @import url('https://fonts.googleapis.com/css2?family=Work+Sans&display=swap');
   @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&display=swap');
   @import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Bitter:wght@500&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Raleway&display=swap');
 
   html {
     /*-- Main font sizes --*/
@@ -2144,7 +2146,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
     /*-- Specify custom fonts ~~~ must be imported above   --*/
     --heading-font:    'Work Sans', sans-serif;
     --mono-font:       'Fira Code', monospace;
-    --body-font:       'Lato', sans-serif;
+    --body-font:       'Bitter', serif;
     --navbar-font:     'Work Sans', sans-serif;  /* websites + blogs only */
   }
 
@@ -2196,7 +2198,6 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 
   .distill-site-header { 
     letter-spacing: 2px;
-    text-transform: uppercase;
   }
 
   h1, h2, h3, h4, h5, h6 {
@@ -2224,7 +2225,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 
   .card {
       color: #474747;
-      background-color: #FFFFFF;
+      background-color: #F2F7FF;
       box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
       transition: 0.3s;
       border-radius: 10px; 
@@ -2262,6 +2263,10 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
     color: crimson;
     padding: 2px;
     font-size: 105%;
+  }
+
+  body {
+    background-color: #F2F7FF;
   }</style>
   <style type="text/css">
   /* base style */
@@ -2457,10 +2462,20 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <input id="distill-search" class="nav-search hidden" type="text" placeholder="Search..."/>
 </div>
 <div class="nav-right">
-<a href="index.html">Home</a>
+<a href="about.html">About</a>
 <a href="posts.html">Posts</a>
-<a href="projects.html">Projects</a>
+<div class="nav-dropdown">
+<button class="nav-dropbtn">
+Projects
+ 
+<span class="down-arrow">&#x25BE;</span>
+</button>
+<div class="nav-dropdown-content">
 <a href="writings.html">Writings</a>
+<a href="software.html">Software</a>
+<a href="analyses.html">Analyses &amp; Visualizations</a>
+</div>
+</div>
 <a href="research.html">Research</a>
 <a href="javascript:void(0);" class="nav-toggle">&#9776;</a>
 </div>
