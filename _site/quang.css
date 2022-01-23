@@ -11,7 +11,7 @@
 /* Optional: embed custom fonts here with `@import`          */
 /* This must remain at the top of this file.                 */
 @import url('https://fonts.googleapis.com/css2?family=Work+Sans&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@500&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Bitter:wght@500&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Raleway&display=swap');
@@ -19,7 +19,7 @@
 html {
   /*-- Main font sizes --*/
   --title-size:      50px;
-  --body-size:       1.06rem;
+  --body-size:       1.1rem;
   --code-size:       14px;
   --aside-size:      12px;
   --fig-cap-size:    13px;
