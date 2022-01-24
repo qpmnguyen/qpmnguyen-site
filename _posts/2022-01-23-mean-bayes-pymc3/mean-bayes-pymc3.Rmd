@@ -1,5 +1,5 @@
 ---
-title: "MiniBlog: Bayesian approach to estimating means with PyMC3"
+title: "Bayesian approach to estimating means with PyMC3"
 description: |
   A short description of the post.
 author:
@@ -9,6 +9,9 @@ date: 2022-01-23
 output:
   distill::distill_article:
     self_contained: false
+    code_folding: true
+    highlight: pygments
+    highlight_downlit: false
 draft: true
 ---
 
@@ -17,23 +20,41 @@ draft: true
 knitr::opts_chunk$set(echo = FALSE)
 ```
 
-<aside>
+
 Setting up the `python` environment  
-```{r}
+
+```{r, echo=TRUE, results='hide'}
 library(reticulate)
-use_condaenv(condaenv = "chocolate_bayes")
+use_virtualenv(virtualenv = "D:/projects/miniblogs/python/chocolate_bayes/")
 py_config()
-if (!arviz %in% py_list_packages$packages){
-    py_install(c("pandas", "arviz", "matplotlib", "numpy", "pymc3", "theano"))
+if (!"arviz" %in% py_list_packages()$packages){
+    py_install(c("pandas", "arviz", "matplotlib", "numpy", "pymc3", "theano", "wheel"))
 }
 ```
-</aside>
+
+
+First, let's import all our packages:  
+
+Load `python` packages  
 
 ```{python}
 import arviz
-
-
+import matplotlib.pyplot as plt
+import numpy as np
+import pymc3 as pm
+import theano.tensor as tt
 ```
+```{r}
+library(tidyverse)
+```
+
+Load our `R` packages  
+
+```{r}
+data <- read_csv(file = "https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2022/2022-01-18/chocolate.csv")
+head(data)
+```
+
 
 
 
