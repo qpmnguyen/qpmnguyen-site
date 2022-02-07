@@ -17,17 +17,16 @@ draft: true
 
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = FALSE)
+knitr::opts_chunk$set(echo = FALSE, R.options=list(width = 70))
+knitr::knit_engines$set(python = reticulate::eng_python)
 ```
 
 
 Setting up the `Julia` environment  
 
-```{r, echo=TRUE, results='hide', cache=TRUE}
-library(JuliaCall)
-JuliaCall::julia_markdown_setup()
-pkgs <- c("Gadfly", "DataFrames", "DataFramesMeta", "CSV", "Chain", "CategoricalArrays", "Turing", "Random", "Statistics", "Distributions", "MCMCChains", "Optim")
-sapply(pkgs, julia_install_package_if_needed)
+```{r python_setup, include=FALSE}
+library(reticulate) 
+use_condaenv("chocolate_bayes")
 ```
 
 
@@ -35,20 +34,19 @@ First, let's import all our packages:
 
 Load `python` packages  
 
-```{julia}
-using Distributions
+```{python}
+import arviz as az
+import matplotlib.pyplot as plt
+import numpy as np
+import pymc3 as pm
+import pandas as pd
+import theano.tensor as tt
+print(f"Running on PyMC3 v{pm.__version__}")
+print(f"Running on ArviZ v{az.__version__}")
 ```
-
-
-```{r}
-library(tidyverse)
-```
-
-Load our `R` packages  
-
-```{r}
-data <- read_csv(file = "https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2022/2022-01-18/chocolate.csv")
-head(data)
+```{python}
+df = pd.read_csv("https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2022/2022-01-18/chocolate.csv")
+df.head()
 ```
 
 
