@@ -1,0 +1,19 @@
+---
+title: "About"
+image: profile.jpg
+about:
+  template: jolla
+  links:
+    - icon: twitter
+      text: Twitter
+      href: https://twitter.com/quangpmnguyen
+    - icon: linkedin
+      text: LinkedIn
+      href: https://linkedin.com/in/qpmnguyen 
+    - icon: github
+      text: Github
+      href: https://github.com/qpmnguyen
+
+---
+
+I'm a data scientist and R/Julia developer in the biomedical sciences. I am currently a Biostatistician at [Regeneron Pharmaceuticals](https://www.regeneron.com/) in early clinical research. Previously, I received my Ph.D. at Dartmouth College working on statistical methods for integrating prior biological knowledge in microbiome data analysis tasks.    

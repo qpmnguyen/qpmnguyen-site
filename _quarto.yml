@@ -1,0 +1,40 @@
+project:
+  type: website
+
+website:
+  title: "Quang Nguyen"
+  repo-url: https://github.com/qpmnguyen/qpmnguyen-website
+  twitter-card: 
+    creator: "@qpmnguyen"
+  navbar:
+    right:
+      - text: Blog
+        href: blog.qmd
+        aria-label: Quang's Blog  
+      - text: Background
+        href: background.qmd 
+        aria-label: Quang's Background
+      - text: Projects
+        href: projects.qmd
+        aria-label: Quang's Projects
+      - icon: github
+        href: https://github.com/qpmnguyen
+        aria-label: Quang's Github
+      - icon: twitter
+        href: https://twitter.com/qpmnguyen
+        aria-label: Quang's Twitter
+  page-footer:
+    right: "This blog is built with [Quarto](https://quarto.org/)."
+    left: |
+      [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/)  
+format:
+  html:
+    highlight-style: a11y
+    theme: 
+     light: [flatly, light.scss]
+     dark: [darkly, dark.scss]
+    mainfont: Lora
+    code-copy: true
+
+
+
