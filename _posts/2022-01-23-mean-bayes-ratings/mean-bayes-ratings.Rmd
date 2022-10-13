@@ -1,0 +1,84 @@
+---
+title: "Estimating chocolate ratings using a Bayesian approach"
+description: |
+  A short description of the post.
+author:
+  - name: Quang Nguyen
+    url: {}
+date: 2022-01-23
+output:
+  distill::distill_article:
+    self_contained: false
+    code_folding: false
+draft: true
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+library(cmdstanr)
+library(tidytuesdayR)
+library(tidyverse)
+library(rmarkdown)
+library(ggridges)
+register_knitr_engine(override = FALSE)
+```
+
+First, let's download our data set from the TidyTuesday repo:  
+
+```{r, results='hide'}
+data <- tidytuesdayR::tt_load(2022, week = 3)
+chocolate <- data$chocolate
+```
+
+We can see that the chocolate data set organizes our chocolate data by company location, manufacturer, the origin of beans, some additional specific on the name of the product, and some memorable details. 
+
+```{r, layout="l-body-outset", echo=FALSE}
+paged_table(chocolate)
+```
+
+What we want to know are the ratings of each of the chocolate products organized by some over-arching variable. In this case I'm interested in seeing the average rating of each origin location where the company was from. In other words, where do we find the best company that makes the tastiest chocolate!   
+
+```{r}
+chocolate %>% group_by(company_location) %>% summarise(n = n(), rating = mean(rating)) %>% paged_table()
+```
+
+Even though there are a lot of locations, let's filter out locations without a lot of companies, and plot our score distribution
+
+```{r, code_folding=TRUE}
+l_names <- chocolate %>% group_by(company_location) %>% summarise(n = n()) %>% filter(n >= 10) %>% pull(company_location)
+plt_data <- chocolate %>% filter(company_location %in% l_names)
+ggplot(plt_data, aes(x = company_location, y = rating)) + geom_density_ridges()
+
+
+```
+
+Let's use this list of countries 
+
+
+```{cmdstan output.var="model", cache=TRUE}
+data {
+    int<lower=1> N; // Number of data
+    vector[N] y; // the mean variable
+}
+
+parameters {
+    real mu;
+    real<lower=0> sigma;
+}
+
+model {
+    mu ~ normal(0,1);
+    sigma ~ exponential(1);
+    y ~ normal(mu, sigma);
+}
+
+
+```
+
+
+
+
