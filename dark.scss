@@ -1,0 +1,18 @@
+/*-- scss:defaults --*/
+@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+$font-family: "Lora", serif;
+$font-family-serif: "Lora", serif;
+
+$primary: #111354;
+
+/*-- scss:rules --*/
+
+kbd, .kbd{
+  background-color: #111354 !important;
+}
+
+.navbar {
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+}

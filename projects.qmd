@@ -1,0 +1,39 @@
+---
+format:
+    html: 
+        toc: true
+        toc-float: true 
+        toc-location: left
+        html-math-method: katex
+        version: 4
+---
+
+## Software
+
+-   `CBEA`: This R package implements the CBEA (Competitive balances for taxonomic enrichment analysis) approach. More details can be found in the [corresponding manuscript](). Source code can be found on [GitHub]() and can be installed via [Bioconductor]().\[[site](https://qpmnguyen.github.io/CBEA/)\]\
+-   `nprbooksR`: This is an R data package containing scraped information from NPR's book concierge (now known as Books We love). Built using `RSelenium`. \[[Source](https://github.com/qpmnguyen/nprbooksR)\]\
+-   **DIFUSE Eddy Covariance Exploration**: A Shiny app for BIOL 16 course at Dartmouth developed as part of the DIFUSE program (funded by NSF) for interactive data visualization and basic model building. \[[Source](https://github.com/diffuse-dartmouth/20x_BIO16)\]  
+-   **TidyTuesday**: Personal repository of figures and tables participating in \#TidyTuesday events. [[Source](https://github.com/qpmnguyen/qn_tidytuesday)]     
+
+## Open-source contributions
+
+-   `epiprocess`: This is an R package developed by the DELPHI group at Carnegie Mellon University to provide tools for basic signal processing in epidemiological forecasting. \[[Source](https://github.com/cmu-delphi/epiprocess)\]\
+-   `SBICgraph`: Structural Bayesian Information Criterion (SBIC) for model selection in network models with a two-step algorithm to generate candidate model pool. Manuscript at [*Zhou et al. 2021*](https://academic.oup.com/biostatistics/advance-article-abstract/doi/10.1093/biostatistics/kxab006/6171092?redirectedFrom=fulltext). \[[Source](https://github.com/hoenlab/SBICgraph)\]
+
+## Non-research writings
+
+I wrote some articles as part of the [The COVID Tracking Project at The Atlantic](https://covidtracking.com/).
+
+-   [Federal COVID Data 101: Working with Death Numbers](https://covidtracking.com/analysis-updates/federal-covid-data-101-working-with-death-numbers)
+
+-   [We Don't Know How Many People Have Recovered From COVID-19](https://www.theatlantic.com/health/archive/2021/01/how-many-have-recovered-covid-19-we-dont-know/617679/). (Cross-published at The Atlantic)
+
+-   [As North Dakota's Deaths Metrics Diverge, We're Switching to a Less Backlogged Measure of Fatalities](https://covidtracking.com/blog/north-dakota-deaths-backlog)
+
+-   [The State of State Antigen Test Reportings](https://covidtracking.com/blog/antigen-testing-reporting)
+
+-   [Confirmed and Probable COVID-19 Deaths, Counted Two Ways](https://covidtracking.com/blog/confirmed-and-probable-covid-19-deaths-counted-two-ways)
+
+-   [What Is a Probable Case of COVID-19?](https://covidtracking.com/blog/what-is-a-probable-case-of-covid-19)
+
+-   [Position Statement on Antibody Data Reporting](https://covidtracking.com/blog/antibody-data-reporting)  

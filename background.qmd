@@ -1,0 +1,46 @@
+---
+format:
+    html: 
+        toc: true
+        toc-float: true 
+        toc-location: left
+        html-math-method: katex
+---
+
+Here's a snapshot of what I have been doing in the past years! You can find a complete version of my CV [here](https://www.example.com). The complete collection of my publications can be found on my [Google Scholar page](https://scholar.google.com/citations?user=Y5jqD-IAAAAJ&hl=en), and my work history can be found on my [LinkedIn](https://www.linkedin.com/in/qpmnguyen/). 
+
+## Current roles   
+**Regeneron Pharmaceuticals** | **2022 - current**  
+Principal Biostatistician  
+
+**DELPHI Group at Carnegie Mellon University** | **2022 - current**  
+Volunteer R Developer   
+
+## Education  
+**Bates College** | **2017**  
+Bachelor of Science in Biochemistry and Mathematics    
+**Dartmouth College** | **2022**   
+Doctor of Philosophy in Quantitative Biomedical Sciences
+
+## Skills  
+* Proficient with **R** for statistical analysis and data science: Using `tidyverse` for data wrangling and visualization, `targets` for workflow generation, `tidymodels` for predictive modelling. Experienced in developing R packages and Shiny dashboards.
+* Additional languages: 
+    * Familiar with leveraging **Julia/Rcpp/Rust** for performance intensive tasks.  
+    * Familiar with **Python** for deep learning (`tensorflow`).  
+    * Familiar with **Stan** for Bayesian analysis (via `cmdstanr`).
+* Additional skills include: 
+    * **Shell/Bash scripting** for running command-line tools and utilities. 
+    * **Git/GitHub** for code versioning and continuous integration.  
+    * **SQL (SQLite and MySQL)** for creating and accessing data that cannot fit in memory.  
+    * **Slurm/Torque High Performance Computing** for analyses that require extra memory and computing time.  
+    * **snakemake/nextflow** for data-intensive workflow management.  
+
+## Research highlights    
+My doctoral dissertation was focused on leveraging external biological knowledge and multi-omics data sets to understand gut microbiomes surveyed in population health studies. I am currently working on exploratory analyses supporting early phase clinical trials. A complete list of my publications (incl. co-author publications) can be found on my [Google Scholar page](https://scholar.google.com/citations?user=Y5jqD-IAAAAJ&hl=en).    
+
+**Quang P Nguyen**, H. Robert Frost, Anne G. Hoen et al. *Associations between the gut microbiome and the metabolome in early life*. *BMC Microbiology*. Aug 2021. [[Source Code](https://github.com/qpmnguyen/infant_metabolome_microbiome)][[Manuscript](https://bmcmicrobiol.biomedcentral.com/articles/10.1186/s12866-021-02282-3)]  
+
+**Quang P Nguyen**, Anne G. Hoen, H. Robert Frost. *CBEA: Competitive isometric log-ratio for taxonomic enrichment analysis*. *PLoS Computational Biology*. Jun 2022. [[Code](https://github.com/qpmnguyen/CBEA_analysis)]  [[Package](https://github.com/qpmnguyen/CBEA)]  [[Manuscript](https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1010091)]  
+
+**Quang P Nguyen**, Anne G. Hoen, H. Robert Frost. *Evaluating trait-based databases for taxonomic enrichment analysis*. *Pre-print on bioRxiv*. June 2022. [[Code](https://github.com/qpmnguyen/microbe_set_trait)] [[Pre-print](https://www.biorxiv.org/content/10.1101/2022.05.16.492155v1)]
+
