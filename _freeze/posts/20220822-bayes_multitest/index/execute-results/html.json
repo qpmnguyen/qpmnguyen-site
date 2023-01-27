@@ -1,0 +1,14 @@
+{
+  "hash": "eddb1f326482268387539be7c832347b",
+  "result": {
+    "markdown": "---\ntitle: \"Yet another post on Bayesian analysis and the multiple testing problem\"\ndescription: | \n    A tale of two frameworks    \ndate: \"2022-08-22\"\ncategories: [Bayesian, Multiple Testing, analysis]\nbibliography: ref.bib\n#image: preview.png\ndraft: true\nnocite: |\n    @ogorek2022, @gelman2022\n---\n\n\n\n\nA while ago Dr. Ben Ogorek wrote a Medium/Twitter titled [\"Bayesians also suffer from the multiple looks bias\"](https://medium.com/@baogorek/bayesians-also-suffer-multiple-looks-bias-cd23c827edce), which makes the case that Bayesian statisticians can't get [free lunches](https://en.wikipedia.org/wiki/There_ain%27t_no_such_thing_as_a_free_lunch) and skip a whole genre of very old and very common problems in statistical analysis. The post is in itself a response to another blog post from Dr. Frank Harell titled [Continuous Learning from Data: No Multiplicities from Computing and Using Bayesian Posterior Probabilities as often as Desired](https://www.fharrell.com/post/bayes-seq/). The response was unfortunately a bit not really clear especially for a new practicing statistician (like me!).  \n\n<blockquote class=\"twitter-tweet\"><p lang=\"en\" dir=\"ltr\">I quit reading at &quot;A key difference is that, in my simulation, there is a null hypothesis and it is always true. &quot; Bayesians don&#39;t condition on unknowns and neither do most scientists. The goal of Bayes is to uncover the hidden truth generating the data, whether null or not.</p>&mdash; Frank Harrell (@f2harrell) <a href=\"https://twitter.com/f2harrell/status/1505982120719798275?ref_src=twsrc%5Etfw\">March 21, 2022</a></blockquote> <script async src=\"https://platform.twitter.com/widgets.js\" charset=\"utf-8\"></script>\n\nThis post is yet another attempt at deciphering this issue at a level that is more approachable (Spoiler alert: I'm Bayesian by aspiration).  \n\n# What is the multiple testing problem?   \n\n# References   \n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}
