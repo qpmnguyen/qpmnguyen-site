@@ -1,0 +1,64 @@
+---
+format:
+    html: 
+        toc: true
+        toc-float: true 
+        toc-location: left
+        html-math-method: katex
+        version: 4
+reference-location: margin
+---
+
+## What is an "analysis philosophy"?  
+
+*This is a work in progress*
+
+**Version: 1.0**
+
+My [analysis philosophy](https://casual-inference.com/post/analysis-statement/) here refers to a set of principles around data analysis that I've come to rely on whenever I approach a data problem. The obvious caveat here is that every project is different and that there is no standard way to go about it. The goal is to document a data science "world-view" that represents my values as a data scientist.
+
+This document is therefore definitely influenced by my background and current employment. My training is interdisciplinary across the fields of biostatistics, bioinformatics, and epidemiology, which means that I carry a little bit of the DNA of each field forward to my work. As such, while I am a fan of computational/algorithmic driven approaches (e.g., machine learning), I give a lot of weight to the more "traditional" aspects of data analysis such as study design and inferential statistics. This is reinforced further as I am currently working as a biostatistician in a biopharmaceutical context.
+
+This document is not a fixed-in-place kind of philosophy. I intend to update it with new things as I learn.
+
+## How I approach data analysis  
+
+### It's all about the data generating process 
+
+Let's start with a definition
+
+> The data generating process (DGP)[^1] refers to the underlying process that give rise to a data point, which includes aspects such as: whose data is being collected, how is the collection being done, when is the data collection performed, etc.
+
+[^1]: More formal DGP definitions would include the *function* specifying the relationship between dependent and independent variables such as the typical linear regression function $Y = \beta_1 X_1 + \beta_2 X_2 + \epsilon$. Here, we refer to the conceptual idea of tracing the provenance of a data point.
+
+It is a truth universally acknowledged that the underlying DGP for a given real world data set is [never going to be known](https://en.wikipedia.org/wiki/Data_generating_process). However, regardless of whether or not it can be observed, it contains analytical consequences and affect which the assumptions we can make in our models. Therefore, thinking thoroughly about how a data set might arise is crucial to making good decisions around not just what models to choose but also how to pre-process and wrangle data. For example, a commonly-known-yet-unknown fact is that when you remove subjects with missing data points (i.e., the complete case analysis), you're making the assumption that the data is missing completely at random (MCAR)[^2]. Making this assumption for convenience of the mechanics of model fitting can create biased and potentially misleading results. Obviously there is no way to properly account for everything, but mapping out how a data point moves from the metaphorical truth to what is presented on the spreadsheet can be the difference maker.
+
+[^2]: Little, R. J. A., D. B. Rubin, and S. Z. Zangeneh. 2017. \"Conditions for Ignoring the Missing-Data Mechanism in Likelihood Inferences for Parameter Subsets.\" *Journal of the American Statistical Association* 112 (517): 314--20.
+
+It is also a mistake to think that prediction problems are free of issues relating to DGP. A famous instance would be the ethically dubious paper that [seeks to predict criminality based on facial recognition](https://www.wired.com/story/algorithm-predicts-criminality-based-face-sparks-furor/). Moral issues aside, the authors [trained their convolutional neural network](https://medium.com/@blaisea/physiognomys-new-clothes-f2d4b59fdd6a) based on a data set where all of their "positive" instances are all pictures taken from mug shots while their "controls" or "negative" instances are all "normal" photos. Thinking about the DGP can avoid these confounding problems and requires the analyst to meet the data face-to-face (pun not intended).
+
+#### What does thinking through a data problem even mean?
+
+::: column-margin
+In a reductive sense, trying to rationalize through the data generating process of observational (and experimental) data sets is essentially the entire field of epidemiology. I am definitely influenced by works such as Epidemiological Methods[^3] by Koepsell and Weiss as well as the more recently published targeted trial framework[^4] by Hernan and Robbins.
+:::
+
+[^3]: Koepsell, Thomas D., and Noel S. Weiss. *Epidemiologic methods: studying the occurrence of illness*. Oxford University Press, USA, 2014.
+
+[^4]: Hernán, Miguel A., and James M. Robins. "Using big data to emulate a target trial when a randomized trial is not available." *American journal of epidemiology* 183.8 (2016): 758-764.
+
+It's a hard question to answer, but I usually rely on trying to identify some core component of each data **point**, namely:
+
+-   I generally want to know what is the most basic unit of observation. I generally think of this in terms of inclusion/exclusion criteria, which would the population that will be captured in this data set. Comparing it to what would be expected is important to figure out whether results are going to apply to the question of interest. I'll also look at whether these observations are independent, or clustered in some form (e.g., geography).
+
+-   Then, I want to figure out what exactly is being measured at each data point and the operational characteristics of those data. Sometimes, we cannot measure a value directly and have to rely on proxies. This is especially important for the quantity I want to model. If there is missing data, I will attempt to figure out a way to explain the mechanism of missingness. Another important component of measurements will also be the circumstances taking the measurement as well. For example, taking a survey in front of an employee is very different than taking a survey remotely.
+
+-   I also want to identify what most likely influences the quantity of interest coming from the unit of observation. In other words, what are potential predictors (covariates) that can explain the measurement of interest? I also want to stratify these variables in terms of both those with a potential causal mechanism as well as those who are spurious (confounders).
+
+Most of the time, these questions are very self-evident, which is great, but most of the time it doesn't., so it's never a waste of time to think about these questions in great detail (and throughout the entire project lifetime!)
+
+### Pre-specification is king
+
+### Principled scaling of model complexity
+
+### Uncertainty is more interesting than the mean

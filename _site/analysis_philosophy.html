@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Quang Nguyen - About</title>
+<title>Quang Nguyen – analysis_philosophy</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -33,6 +33,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
@@ -60,15 +61,26 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded", function () {
+ var mathElements = document.getElementsByClassName("math");
+ var macros = [];
+ for (var i = 0; i < mathElements.length; i++) {
+  var texText = mathElements[i].firstChild;
+  if (mathElements[i].tagName == "SPAN") {
+   katex.render(texText.data, mathElements[i], {
+    displayMode: mathElements[i].classList.contains('display'),
+    throwOnError: false,
+    macros: macros,
+    fleqn: false
+   });
+}}});
+  </script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css">
 
-<meta name="twitter:title" content="Quang Nguyen - About">
-<meta name="twitter:description" content="I’m a data scientist and R/Julia developer in the biomedical sciences. I am currently a Biostatistician at Regeneron Pharmaceuticals in early clinical research. Previously, I received my Ph.D.">
-<meta name="twitter:image" content="profile.jpg">
-<meta name="twitter:creator" content="@qpmnguyen">
-<meta name="twitter:card" content="summary_large_image">
 </head>
 
-<body class="nav-fixed fullcontent">
+<body class="floating nav-fixed slimcontent">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -97,7 +109,7 @@ ul.task-list li input[type="checkbox"] {
  <span class="menu-text">Projects</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./analysis_philosophy.html">
+    <a class="nav-link active" href="./analysis_philosophy.html" aria-current="page">
  <span class="menu-text">Analysis Philosophy</span></a>
   </li>  
   <li class="nav-item compact">
@@ -122,40 +134,77 @@ ul.task-list li input[type="checkbox"] {
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation floating overflow-auto">
+    <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#what-is-an-analysis-philosophy" id="toc-what-is-an-analysis-philosophy" class="nav-link active" data-scroll-target="#what-is-an-analysis-philosophy">What is an “analysis philosophy”?</a></li>
+  <li><a href="#how-i-approach-data-analysis" id="toc-how-i-approach-data-analysis" class="nav-link" data-scroll-target="#how-i-approach-data-analysis">How I approach data analysis</a>
+  <ul class="collapse">
+  <li><a href="#its-all-about-the-data-generating-process" id="toc-its-all-about-the-data-generating-process" class="nav-link" data-scroll-target="#its-all-about-the-data-generating-process">It’s all about the data generating process</a></li>
+  <li><a href="#pre-specification-is-king" id="toc-pre-specification-is-king" class="nav-link" data-scroll-target="#pre-specification-is-king">Pre-specification is king</a></li>
+  <li><a href="#principled-scaling-of-model-complexity" id="toc-principled-scaling-of-model-complexity" class="nav-link" data-scroll-target="#principled-scaling-of-model-complexity">Principled scaling of model complexity</a></li>
+  <li><a href="#uncertainty-is-more-interesting-than-the-mean" id="toc-uncertainty-is-more-interesting-than-the-mean" class="nav-link" data-scroll-target="#uncertainty-is-more-interesting-than-the-mean">Uncertainty is more interesting than the mean</a></li>
+  </ul></li>
+  </ul>
+</nav>
+</nav>
 <!-- margin-sidebar -->
-    
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+    </div>
 <!-- main -->
-<div class="quarto-about-jolla">
-  <img src="profile.jpg" class="about-image
-  round " style="height: 15em; width: 15em;">
- <header id="title-block-header" class="quarto-title-block default">
-<div class="quarto-title">
-<h1 class="title">About</h1>
-</div>
-<div class="quarto-title-meta">
-  </div>
-</header><main class="content" id="quarto-document-content">
-<p>I’m a data scientist and R/Julia developer in the biomedical sciences. I am currently a Biostatistician at <a href="https://www.regeneron.com/">Regeneron Pharmaceuticals</a> in early clinical research. Previously, I received my Ph.D.&nbsp;at Dartmouth College working on statistical methods for integrating prior biological knowledge in microbiome data analysis tasks.</p>
+<main class="content page-columns page-full" id="quarto-document-content">
 
 
-</main> 
-  <hr class="about-sep">
-   <div class="about-links">
-  <a href="https://fediscience.org/@qpmnguyen" class="about-link">
-    <i class="bi bi-mastodon"></i>
-     <span class="about-link-text">Mastodon</span>
-  </a>
-  <a href="https://linkedin.com/in/qpmnguyen" class="about-link">
-    <i class="bi bi-linkedin"></i>
-     <span class="about-link-text">LinkedIn</span>
-  </a>
-  <a href="https://github.com/qpmnguyen" class="about-link">
-    <i class="bi bi-github"></i>
-     <span class="about-link-text">Github</span>
-  </a>
-</div>
-</div>
- <!-- /main -->
+
+<section id="what-is-an-analysis-philosophy" class="level2">
+<h2 class="anchored" data-anchor-id="what-is-an-analysis-philosophy">What is an “analysis philosophy”?</h2>
+<p><em>This is a work in progress</em></p>
+<p><strong>Version: 1.0</strong></p>
+<p>My <a href="https://casual-inference.com/post/analysis-statement/">analysis philosophy</a> here refers to a set of principles around data analysis that I’ve come to rely on whenever I approach a data problem. The obvious caveat here is that every project is different and that there is no standard way to go about it. The goal is to document a data science “world-view” that represents my values as a data scientist.</p>
+<p>This document is therefore definitely influenced by my background and current employment. My training is interdisciplinary across the fields of biostatistics, bioinformatics, and epidemiology, which means that I carry a little bit of the DNA of each field forward to my work. As such, while I am a fan of computational/algorithmic driven approaches (e.g., machine learning), I give a lot of weight to the more “traditional” aspects of data analysis such as study design and inferential statistics. This is reinforced further as I am currently working as a biostatistician in a biopharmaceutical context.</p>
+<p>This document is not a fixed-in-place kind of philosophy. I intend to update it with new things as I learn.</p>
+</section>
+<section id="how-i-approach-data-analysis" class="level2 page-columns page-full">
+<h2 class="anchored" data-anchor-id="how-i-approach-data-analysis">How I approach data analysis</h2>
+<section id="its-all-about-the-data-generating-process" class="level3 page-columns page-full">
+<h3 class="anchored" data-anchor-id="its-all-about-the-data-generating-process">It’s all about the data generating process</h3>
+<p>Let’s start with a definition</p>
+<blockquote class="blockquote page-columns page-full">
+<div class="page-columns page-full"><p>The data generating process (DGP)<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> refers to the underlying process that give rise to a data point, which includes aspects such as: whose data is being collected, how is the collection being done, when is the data collection performed, etc.</p><div class="no-row-height column-margin column-container"><li id="fn1"><p><sup>1</sup>&nbsp;More formal DGP definitions would include the <em>function</em> specifying the relationship between dependent and independent variables such as the typical linear regression function <span class="math inline">Y = \beta_1 X_1 + \beta_2 X_2 + \epsilon</span>. Here, we refer to the conceptual idea of tracing the provenance of a data point.</p></li></div></div>
+</blockquote>
+<div class="page-columns page-full"><p>It is a truth universally acknowledged that the underlying DGP for a given real world data set is <a href="https://en.wikipedia.org/wiki/Data_generating_process">never going to be known</a>. However, regardless of whether or not it can be observed, it contains analytical consequences and affect which the assumptions we can make in our models. Therefore, thinking thoroughly about how a data set might arise is crucial to making good decisions around not just what models to choose but also how to pre-process and wrangle data. For example, a commonly-known-yet-unknown fact is that when you remove subjects with missing data points (i.e., the complete case analysis), you’re making the assumption that the data is missing completely at random (MCAR)<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>. Making this assumption for convenience of the mechanics of model fitting can create biased and potentially misleading results. Obviously there is no way to properly account for everything, but mapping out how a data point moves from the metaphorical truth to what is presented on the spreadsheet can be the difference maker.</p><div class="no-row-height column-margin column-container"><li id="fn2"><p><sup>2</sup>&nbsp;Little, R. J. A., D. B. Rubin, and S. Z. Zangeneh. 2017. "Conditions for Ignoring the Missing-Data Mechanism in Likelihood Inferences for Parameter Subsets." <em>Journal of the American Statistical Association</em> 112 (517): 314–20.</p></li></div></div>
+<p>It is also a mistake to think that prediction problems are free of issues relating to DGP. A famous instance would be the ethically dubious paper that <a href="https://www.wired.com/story/algorithm-predicts-criminality-based-face-sparks-furor/">seeks to predict criminality based on facial recognition</a>. Moral issues aside, the authors <a href="https://medium.com/@blaisea/physiognomys-new-clothes-f2d4b59fdd6a">trained their convolutional neural network</a> based on a data set where all of their “positive” instances are all pictures taken from mug shots while their “controls” or “negative” instances are all “normal” photos. Thinking about the DGP can avoid these confounding problems and requires the analyst to meet the data face-to-face (pun not intended).</p>
+<section id="what-does-thinking-through-a-data-problem-even-mean" class="level4 page-columns page-full">
+<h4 class="anchored" data-anchor-id="what-does-thinking-through-a-data-problem-even-mean">What does thinking through a data problem even mean?</h4>
+
+<div class="no-row-height column-margin column-container"><div class="">
+<p>In a reductive sense, trying to rationalize through the data generating process of observational (and experimental) data sets is essentially the entire field of epidemiology. I am definitely influenced by works such as Epidemiological Methods<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a> by Koepsell and Weiss as well as the more recently published targeted trial framework<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a> by Hernan and Robbins.<li id="fn3"><p><sup>3</sup>&nbsp;Koepsell, Thomas D., and Noel S. Weiss. <em>Epidemiologic methods: studying the occurrence of illness</em>. Oxford University Press, USA, 2014.</p></li><li id="fn4"><p><sup>4</sup>&nbsp;Hernán, Miguel A., and James M. Robins. “Using big data to emulate a target trial when a randomized trial is not available.” <em>American journal of epidemiology</em> 183.8 (2016): 758-764.</p></li></p>
+</div></div><p>It’s a hard question to answer, but I usually rely on trying to identify some core component of each data <strong>point</strong>, namely:</p>
+<ul>
+<li><p>I generally want to know what is the most basic unit of observation. I generally think of this in terms of inclusion/exclusion criteria, which would the population that will be captured in this data set. Comparing it to what would be expected is important to figure out whether results are going to apply to the question of interest. I’ll also look at whether these observations are independent, or clustered in some form (e.g., geography).</p></li>
+<li><p>Then, I want to figure out what exactly is being measured at each data point and the operational characteristics of those data. Sometimes, we cannot measure a value directly and have to rely on proxies. This is especially important for the quantity I want to model. If there is missing data, I will attempt to figure out a way to explain the mechanism of missingness. Another important component of measurements will also be the circumstances taking the measurement as well. For example, taking a survey in front of an employee is very different than taking a survey remotely.</p></li>
+<li><p>I also want to identify what most likely influences the quantity of interest coming from the unit of observation. In other words, what are potential predictors (covariates) that can explain the measurement of interest? I also want to stratify these variables in terms of both those with a potential causal mechanism as well as those who are spurious (confounders).</p></li>
+</ul>
+<p>Most of the time, these questions are very self-evident, which is great, but most of the time it doesn’t., so it’s never a waste of time to think about these questions in great detail (and throughout the entire project lifetime!)</p>
+</section>
+</section>
+<section id="pre-specification-is-king" class="level3">
+<h3 class="anchored" data-anchor-id="pre-specification-is-king">Pre-specification is king</h3>
+</section>
+<section id="principled-scaling-of-model-complexity" class="level3">
+<h3 class="anchored" data-anchor-id="principled-scaling-of-model-complexity">Principled scaling of model complexity</h3>
+</section>
+<section id="uncertainty-is-more-interesting-than-the-mean" class="level3">
+<h3 class="anchored" data-anchor-id="uncertainty-is-more-interesting-than-the-mean">Uncertainty is more interesting than the mean</h3>
+
+
+</section>
+</section>
+
+
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
@@ -291,6 +340,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   } else {
     toggleColorMode(false);
   }
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
   const clipboard = new window.ClipboardJS('.code-copy-button', {
     target: function(trigger) {
       return trigger.previousElementSibling;

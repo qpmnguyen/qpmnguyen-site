@@ -4,9 +4,9 @@ image: profile.jpg
 about:
   template: jolla
   links:
-    - icon: twitter
-      text: Twitter
-      href: https://twitter.com/quangpmnguyen
+    - icon: mastodon
+      text: Mastodon
+      href: https://fediscience.org/@qpmnguyen
     - icon: linkedin
       text: LinkedIn
       href: https://linkedin.com/in/qpmnguyen 

@@ -17,12 +17,15 @@ website:
       - text: Projects
         href: projects.qmd
         aria-label: Quang's Projects
+      - text: Analysis Philosophy
+        href: analysis_philosophy.qmd
+        aria-label: Analysis Philosophy
       - icon: github
         href: https://github.com/qpmnguyen
         aria-label: Quang's Github
-      - icon: twitter
-        href: https://twitter.com/qpmnguyen
-        aria-label: Quang's Twitter
+      - icon: mastodon
+        href: https://fediscience.org/@qpmnguyen 
+    
   page-footer:
     right: "This blog is built with [Quarto](https://quarto.org/)."
     left: |
